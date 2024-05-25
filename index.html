@@ -159,7 +159,7 @@
                     });
                 });
 
-                const langFlag = document.querySelector('.lang-button img');
+                const langFlag = document.querySelector('.lang-button input');
                 langFlag.src = language === 'greek' ? 'img/uk-flag.png' : 'img/gr-flag.png';
             }
 
@@ -183,8 +183,9 @@
     <div class="header">
         <h1>Καλοκαιρινό Μπαρ στη Νέα Φώκαια, Χαλκιδική</h1>
         <p>Απολαύστε τα δροσιστικά μας ποτά και το νόστιμο φαγητό δίπλα στη θάλασσα</p>
-        <div id="lang-button" class="lang-button" onclick="switchLanguage()">
-            <img src="img/gr-flag.png" alt="Greek Flag">
+        <div id="lang-button" class="lang-button">
+            <input type="image" id="image" alt="paw" src="img\gr-flag.png" class="paw_image" onclick="switchLanguage()">
+            <!-- <img src="img/gr-flag.png" alt="Greek Flag"> -->
         </div>
     </div>
     <div class="menu">
