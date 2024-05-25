@@ -30,6 +30,7 @@
             border-bottom: 2px solid #4CAF50;
             padding-bottom: 10px;
             margin-bottom: 20px;
+            cursor: pointer;
         }
         .menu-item {
             margin-bottom: 20px;
@@ -47,7 +48,28 @@
             font-weight: bold;
             color: #4CAF50;
         }
+        .menu-section {
+            display: none;
+        }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.menu-section');
+            const headers = document.querySelectorAll('.menu h2');
+
+            headers.forEach((header, index) => {
+                header.addEventListener('click', function() {
+                    sections.forEach((section, secIndex) => {
+                        if (index === secIndex) {
+                            section.style.display = section.style.display === 'none' || section.style.display === '' ? 'block' : 'none';
+                        } else {
+                            section.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </head>
 <body>
 
@@ -57,10 +79,8 @@
 </div>
 
 <div class="menu">
-    <h2>Menu</h2>
-
+    <h2>Drinks</h2>
     <div class="menu-section">
-        <h2>Drinks</h2>
         <div class="menu-item">
             <div>
                 <h3>Mojito</h3>
@@ -84,8 +104,8 @@
         </div>
     </div>
 
+    <h2>Appetizers</h2>
     <div class="menu-section">
-        <h2>Appetizers</h2>
         <div class="menu-item">
             <div>
                 <h3>Tzatziki</h3>
@@ -109,8 +129,8 @@
         </div>
     </div>
 
+    <h2>Main Courses</h2>
     <div class="menu-section">
-        <h2>Main Courses</h2>
         <div class="menu-item">
             <div>
                 <h3>Moussaka</h3>
