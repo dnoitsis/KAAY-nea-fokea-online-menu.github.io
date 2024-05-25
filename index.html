@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ΚΑΑΥ Νέα Φώκαια, Χαλκιδική</title>
+    <title>Καλοκαιρινό Μπαρ στη Νέα Φώκαια, Χαλκιδική</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -51,149 +51,162 @@
         .menu-section {
             display: none;
         }
+        .lang-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const sections = document.querySelectorAll('.menu-section');
             const headers = document.querySelectorAll('.menu h2');
+            const langButton = document.getElementById('lang-button');
 
-            headers.forEach((header, index) => {
-                header.addEventListener('click', function() {
-                    sections.forEach((section, secIndex) => {
-                        if (index === secIndex) {
-                            section.style.display = section.style.display === 'none' || section.style.display === '' ? 'block' : 'none';
-                        } else {
-                            section.style.display = 'none';
-                        }
+            const menuData = {
+                greek: {
+                    header: "Καλοκαιρινό Μπαρ στη Νέα Φώκαια, Χαλκιδική",
+                    subHeader: "Απολαύστε τα δροσιστικά μας ποτά και το νόστιμο φαγητό δίπλα στη θάλασσα",
+                    button: "Change to English",
+                    categories: ["Καφές", "Ποτά", "Ορεκτικά", "Κυρίως Πιάτα"],
+                    items: {
+                        "Καφές": [
+                            { name: "Εσπρέσο", desc: "Πλούσιος και αρωματικός καφές", price: "€3.00" },
+                            { name: "Καπουτσίνο", desc: "Εσπρέσο με αφρόγαλα", price: "€4.50" },
+                            { name: "Λάτε", desc: "Εσπρέσο με ζεστό γάλα", price: "€4.50" },
+                            { name: "Φρέντο Εσπρέσο", desc: "Παγωμένος εσπρέσο", price: "€4.00" },
+                            { name: "Φρέντο Καπουτσίνο", desc: "Παγωμένος καπουτσίνο", price: "€4.50" }
+                        ],
+                        "Ποτά": [
+                            { name: "Μοχίτο", desc: "Δροσιστικό κοκτέιλ με μέντα, λάιμ και ρούμι", price: "€8.00" },
+                            { name: "Πίνα Κολάδα", desc: "Τροπικό μείγμα από ανανά, καρύδα και ρούμι", price: "€9.00" },
+                            { name: "Ελληνικό Φραπέ", desc: "Παραδοσιακός ελληνικός παγωμένος καφές", price: "€4.00" }
+                        ],
+                        "Ορεκτικά": [
+                            { name: "Τζατζίκι", desc: "Κρεμώδης σάλτσα γιαουρτιού με αγγούρι και σκόρδο", price: "€5.00" },
+                            { name: "Ελληνική Σαλάτα", desc: "Ντομάτες, αγγούρια, ελιές και φέτα", price: "€7.00" },
+                            { name: "Σαγανάκι", desc: "Τηγανητό τυρί με λεμόνι", price: "€6.00" }
+                        ],
+                        "Κυρίως Πιάτα": [
+                            { name: "Μουσακάς", desc: "Στρώσεις μελιτζάνας, κιμά και μπεσαμέλ", price: "€12.00" },
+                            { name: "Φιλέτο Τσιπούρας", desc: "Φρέσκια τσιπούρα, ψημένη στη σχάρα", price: "€15.00" },
+                            { name: "Σουβλάκι", desc: "Ψητά καλαμάκια κρέατος με πίτα και τζατζίκι", price: "€10.00" }
+                        ]
+                    }
+                },
+                english: {
+                    header: "Summer Bar in Nea Fokea, Halkidiki",
+                    subHeader: "Enjoy our refreshing drinks and delicious food by the sea",
+                    button: "Αλλαγή σε Ελληνικά",
+                    categories: ["Coffee", "Drinks", "Appetizers", "Main Courses"],
+                    items: {
+                        "Coffee": [
+                            { name: "Espresso", desc: "Rich and aromatic shot of coffee", price: "€3.00" },
+                            { name: "Cappuccino", desc: "Espresso with steamed milk and foam", price: "€4.50" },
+                            { name: "Latte", desc: "Espresso with steamed milk", price: "€4.50" },
+                            { name: "Freddo Espresso", desc: "Iced espresso", price: "€4.00" },
+                            { name: "Freddo Cappuccino", desc: "Iced cappuccino", price: "€4.50" }
+                        ],
+                        "Drinks": [
+                            { name: "Mojito", desc: "Refreshing cocktail with mint, lime, and rum", price: "€8.00" },
+                            { name: "Pina Colada", desc: "A tropical blend of pineapple, coconut, and rum", price: "€9.00" },
+                            { name: "Greek Frappe", desc: "Traditional Greek iced coffee", price: "€4.00" }
+                        ],
+                        "Appetizers": [
+                            { name: "Tzatziki", desc: "Creamy yogurt dip with cucumber and garlic", price: "€5.00" },
+                            { name: "Greek Salad", desc: "Tomatoes, cucumbers, olives, and feta cheese", price: "€7.00" },
+                            { name: "Saganaki", desc: "Fried cheese with lemon", price: "€6.00" }
+                        ],
+                        "Main Courses": [
+                            { name: "Moussaka", desc: "Layered eggplant, minced meat, and béchamel sauce", price: "€12.00" },
+                            { name: "Grilled Sea Bass", desc: "Freshly caught sea bass, grilled to perfection", price: "€15.00" },
+                            { name: "Souvlaki", desc: "Grilled meat skewers served with pita bread and tzatziki", price: "€10.00" }
+                        ]
+                    }
+                }
+            };
+
+            let currentLang = 'greek';
+
+            function updateMenu(language) {
+                document.querySelector('.header h1').textContent = menuData[language].header;
+                document.querySelector('.header p').textContent = menuData[language].subHeader;
+                langButton.textContent = menuData[language].button;
+
+                const categories = document.querySelectorAll('.menu h2');
+                const sections = document.querySelectorAll('.menu-section');
+                categories.forEach((category, index) => {
+                    category.textContent = menuData[language].categories[index];
+                });
+
+                sections.forEach((section, index) => {
+                    const items = menuData[language].items[menuData[language].categories[index]];
+                    section.innerHTML = '';
+                    items.forEach(item => {
+                        const menuItem = document.createElement('div');
+                        menuItem.classList.add('menu-item');
+                        menuItem.innerHTML = `
+                            <div>
+                                <h3>${item.name}</h3>
+                                <p>${item.desc}</p>
+                            </div>
+                            <div class="price">${item.price}</div>
+                        `;
+                        section.appendChild(menuItem);
                     });
                 });
+            }
+
+            langButton.addEventListener('click', function() {
+                currentLang = currentLang === 'greek' ? 'english' : 'greek';
+                updateMenu(currentLang);
             });
+
+                        headers.forEach((header, index) => {
+                header.addEventListener('click', function() {
+                    sections.forEach(section => section.style.display = 'none');
+                    sections[index].style.display = 'block';
+                });
+            });
+
+            updateMenu(currentLang); // Initial menu update
         });
     </script>
 </head>
 <body>
+    <div class="header">
+        <h1>Καλοκαιρινό Μπαρ στη Νέα Φώκαια, Χαλκιδική</h1>
+        <p>Απολαύστε τα δροσιστικά μας ποτά και το νόστιμο φαγητό δίπλα στη θάλασσα</p>
+    </div>
+    <div class="menu">
+        <button id="lang-button" class="lang-button">Change to English</button>
 
-<div class="header">
-    <h1>ΚΑΑΥ Νέας Φώκαιας, Χαλκιδική</h1>
-    <p></p>
-</div>
+        <h2>Καφές</h2>
+        <div class="menu-section" id="coffee-section">
+            <!-- Coffee items will be populated here by JavaScript -->
+        </div>
 
-<div class="menu">
-    <h1>Menu</h1>
-    <h2>ΚΑΦΕΣ</h2>
-    <div class="menu-section">
-        <div class="menu-item">
-            <div>
-                <h3>Espresso</h3>
-                <p></p>
-            </div>
-            <div class="price">€1.00</div>
+        <h2>Ποτά</h2>
+        <div class="menu-section" id="drinks-section">
+            <!-- Drinks items will be populated here by JavaScript -->
         </div>
-        <div class="menu-item">
-            <div>
-                <h3>Cappuccino</h3>
-                <p></p>
-            </div>
-            <div class="price">€1.50</div>
+
+        <h2>Ορεκτικά</h2>
+        <div class="menu-section" id="appetizers-section">
+            <!-- Appetizers items will be populated here by JavaScript -->
         </div>
-        <div class="menu-item">
-            <div>
-                <h3>Latte</h3>
-                <p></p>
-            </div>
-            <div class="price">€2.50</div>
-        </div>
-        <div class="menu-item">
-            <div>
-                <h3>Freddo Espresso</h3>
-                <p></p>
-            </div>
-            <div class="price">€2.00</div>
-        </div>
-        <div class="menu-item">
-            <div>
-                <h3>Freddo Cappuccino</h3>
-                <p></p>
-            </div>
-            <div class="price">€2.50</div>
+
+        <h2>Κυρίως Πιάτα</h2>
+        <div class="menu-section" id="main-courses-section">
+            <!-- Main courses items will be populated here by JavaScript -->
         </div>
     </div>
-
-    <h2>ΑΝΑΨΥΚΤΙΚΑ</h2>
-    <div class="menu-section">
-        <div class="menu-item">
-            <div>
-                <h3>Coca cola</h3>
-                <p></p>
-            </div>
-            <div class="price">€1.00</div>
-        </div>
-        <div class="menu-item">
-            <div>
-                <h3>Λεμονάδα</h3>
-                <p></p>
-            </div>
-            <div class="price">€1.00</div>
-        </div>
-        <div class="menu-item">
-            <div>
-                <h3>Sprite</h3>
-                <p></p>
-            </div>
-            <div class="price">€1.00</div>
-        </div>
-    </div>
-
-    <h2>Φαγητό</h2>
-    <div class="menu-section">
-        <div class="menu-item">
-            <div>
-                <h3>Πίτσα ατομική</h3>
-                <p></p>
-            </div>
-            <div class="price">€2.00</div>
-        </div>
-        <div class="menu-item">
-            <div>
-                <h3>Κουλούρι Θεσσαλονίκης</h3>
-                <p></p>
-            </div>
-            <div class="price">€0.50</div>
-        </div>
-        <div class="menu-item">
-            <div>
-                <h3>Σπανακόπιτα</h3>
-                <p></p>
-            </div>
-            <div class="price">€1.00</div>
-        </div>
-    </div>
-
-    <h2>Ποτά</h2>
-    <div class="menu-section">
-        <div class="menu-item">
-            <div>
-                <h3>Μπύρα ΑΛΦΑ βαρέλι 500ml</h3>
-                <p></p>
-            </div>
-            <div class="price">€4.00</div>
-        </div>
-        <div class="menu-item">
-            <div>
-                <h3>Βότκα πορτοκάλι</h3>
-                <p></p>
-            </div>
-            <div class="price">€7.00</div>
-        </div>
-        <div class="menu-item">
-            <div>
-                <h3>Gin tonic</h3>
-                <p></p>
-            </div>
-            <div class="price">€7.00</div>
-        </div>
-    </div>
-</div>
-
 </body>
 </html>
+
+                
