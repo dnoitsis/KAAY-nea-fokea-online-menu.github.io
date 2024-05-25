@@ -23,13 +23,11 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            display: flex;
         }
         .lang-button img {
             width: 30px;
             height: 20px;
             cursor: pointer;
-            margin-left: 5px;
         }
         .menu {
             max-width: 800px;
@@ -160,6 +158,9 @@
                         section.appendChild(menuItem);
                     });
                 });
+
+                const langFlag = document.querySelector('.lang-button img');
+                langFlag.src = language === 'greek' ? 'english-flag.png' : 'greek-flag.png';
             }
 
             function switchLanguage() {
@@ -167,7 +168,7 @@
                 updateMenu(currentLang);
             }
 
-                        headers.forEach((header, index) => {
+            headers.forEach((header, index) => {
                 header.addEventListener('click', function() {
                     sections.forEach(section => section.style.display = 'none');
                     sections[index].style.display = 'block';
@@ -183,8 +184,7 @@
         <h1>Καλοκαιρινό Μπαρ στη Νέα Φώκαια, Χαλκιδική</h1>
         <p>Απολαύστε τα δροσιστικά μας ποτά και το νόστιμο φαγητό δίπλα στη θάλασσα</p>
         <div id="lang-button" class="lang-button">
-            <img src="img/gr-flag.png" alt="Greek Flag" onclick="switchLanguage()">
-            <img src="img/uk-flag.png" alt="English Flag" onclick="switchLanguage()">
+            <img src="greek-flag.png" alt="Greek Flag" onclick="switchLanguage()">
         </div>
     </div>
     <div class="menu">
