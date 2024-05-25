@@ -17,6 +17,19 @@
             color: white;
             padding: 20px;
             text-align: center;
+            position: relative;
+        }
+        .lang-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+        }
+        .lang-button img {
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+            margin-left: 5px;
         }
         .menu {
             max-width: 800px;
@@ -51,16 +64,6 @@
         .menu-section {
             display: none;
         }
-        .lang-button {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -72,7 +75,6 @@
                 greek: {
                     header: "Καλοκαιρινό Μπαρ στη Νέα Φώκαια, Χαλκιδική",
                     subHeader: "Απολαύστε τα δροσιστικά μας ποτά και το νόστιμο φαγητό δίπλα στη θάλασσα",
-                    button: "Change to English",
                     categories: ["Καφές", "Ποτά", "Ορεκτικά", "Κυρίως Πιάτα"],
                     items: {
                         "Καφές": [
@@ -102,7 +104,6 @@
                 english: {
                     header: "Summer Bar in Nea Fokea, Halkidiki",
                     subHeader: "Enjoy our refreshing drinks and delicious food by the sea",
-                    button: "Αλλαγή σε Ελληνικά",
                     categories: ["Coffee", "Drinks", "Appetizers", "Main Courses"],
                     items: {
                         "Coffee": [
@@ -136,7 +137,6 @@
             function updateMenu(language) {
                 document.querySelector('.header h1').textContent = menuData[language].header;
                 document.querySelector('.header p').textContent = menuData[language].subHeader;
-                langButton.textContent = menuData[language].button;
 
                 const categories = document.querySelectorAll('.menu h2');
                 const sections = document.querySelectorAll('.menu-section');
@@ -162,10 +162,10 @@
                 });
             }
 
-            langButton.addEventListener('click', function() {
+            function switchLanguage() {
                 currentLang = currentLang === 'greek' ? 'english' : 'greek';
                 updateMenu(currentLang);
-            });
+            }
 
                         headers.forEach((header, index) => {
                 header.addEventListener('click', function() {
@@ -182,9 +182,12 @@
     <div class="header">
         <h1>Καλοκαιρινό Μπαρ στη Νέα Φώκαια, Χαλκιδική</h1>
         <p>Απολαύστε τα δροσιστικά μας ποτά και το νόστιμο φαγητό δίπλα στη θάλασσα</p>
+        <div id="lang-button" class="lang-button">
+            <img src="greek-flag.png" alt="Greek Flag" onclick="switchLanguage()">
+            <img src="english-flag.png" alt="English Flag" onclick="switchLanguage()">
+        </div>
     </div>
     <div class="menu">
-        <button id="lang-button" class="lang-button">Change to English</button>
 
         <h2>Καφές</h2>
         <div class="menu-section" id="coffee-section">
@@ -208,5 +211,3 @@
     </div>
 </body>
 </html>
-
-                
