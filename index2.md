@@ -1,1 +1,230 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Καλοκαιρινό Μπαρ στη Νέα Φώκαια, Χαλκιδική</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('img/nea-fokea-tower.jpg') no-repeat center center fixed; /* Church image */
+            background-size: inherit;
+            background-attachment: fixed; /* Make background stay in place */
+            color: #333;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.7); /* White overlay with 70% opacity */
+            z-index: -1;
+        }
+        .header {
+            background: rgba(0, 102, 204, 0.8); /* Greek blue with opacity */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .lang-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+        .lang-button img {
+            width: 30px;
+            height: 20px;
+        }
+        .menu {
+            max-width: 800px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.1); /* White overlay with 70% opacity */<!-- white; -->
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .menu h2 {
+            color: #0066cc; /* Greek blue */
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            font-family: 'Georgia', serif; /* Serif font for headings */
+        }
+        .menu-item {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Georgia', serif; /* Serif font for menu items */
+        }
+        .menu-item h3 {
+            margin: 0;
+            padding: 0;
+        }
+        .menu-item p {
+            margin: 5px 0 0;
+        }
+        .price {
+            font-weight: bold;
+            color: #0066cc; /* Greek blue */
+        }
+        .menu-section {
+            display: none;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.menu-section');
+            const headers = document.querySelectorAll('.menu h2');
+            const langButton = document.getElementById('lang-button');
 
+            const menuData = {
+                greek: {
+                    header: "Καλοκαιρινό Μπαρ στη Νέα Φώκαια, Χαλκιδική",
+                    subHeader: "Απολαύστε τα δροσιστικά μας ποτά και το νόστιμο φαγητό δίπλα στη θάλασσα",
+                    categories: ["Καφές", "Ποτά", "Ορεκτικά", "Κυρίως Πιάτα"],
+                    items: {
+                        "Καφές": [
+                            { name: "Εσπρέσο", desc: "Πλούσιος και αρωματικός καφές", price: "€3.00" },
+                            { name: "Καπουτσίνο", desc: "Εσπρέσο με αφρόγαλα", price: "€4.50" },
+                            { name: "Λάτε", desc: "Εσπρέσο με ζεστό γάλα", price: "€4.50" },
+                            { name: "Φρέντο Εσπρέσο", desc: "Παγωμένος εσπρέσο", price: "€4.00" },
+                            { name: "Φρέντο Καπουτσίνο", desc: "Παγωμένος καπουτσίνο", price: "€4.50" }
+                        ],
+                        "Ποτά": [
+                            { name: "Μοχίτο", desc: "Δροσιστικό κοκτέιλ με μέντα, λάιμ και ρούμι", price: "€8.00" },
+                            { name: "Πίνα Κολάδα", desc: "Τροπικό μείγμα από ανανά, καρύδα και ρούμι", price: "€9.00" },
+                            { name: "Ελληνικό Φραπέ", desc: "Παραδοσιακός ελληνικός παγωμένος καφές", price: "€4.00" }
+                        ],
+                        "Ορεκτικά": [
+                            { name: "Τζατζίκι", desc: "Κρεμώδης σάλτσα γιαουρτιού με αγγούρι και σκόρδο", price: "€5.00" },
+                            { name: "Ελληνική Σαλάτα", desc: "Ντομάτες, αγγούρια, ελιές και φέτα", price: "€7.00" },
+                            { name: "Σαγανάκι", desc: "Τηγανητό τυρί με λεμόνι", price: "€6.00" }
+                        ],
+                        "Κυρίως Πιάτα": [
+                            { name: "Μουσακάς", desc: "Στρώσεις μελιτζάνας, κιμά και μπεσαμέλ", price: "€12.00" },
+                            { name: "Φιλέτο Τσιπούρας", desc: "Φρέσκια τσιπούρα, ψημένη στη σχάρα", price: "€15.00" },
+                            { name: "Σουβλάκι", desc: "Ψητά καλαμάκια κρέατος με πίτα και τζατζίκι", price: "€10.00" }
+                        ]
+                    }
+                },
+                english: {
+                    header: "Summer Bar in Nea Fokea, Halkidiki",
+                    subHeader: "Enjoy our refreshing drinks and delicious food by the sea",
+                    categories: ["Coffee", "Drinks", "Appetizers", "Main Courses"],
+                    items: {
+                        "Coffee": [
+                            { name: "Espresso", desc: "Rich and aromatic shot of coffee", price: "€3.00" },
+                            { name: "Cappuccino", desc: "Espresso with steamed milk and foam", price: "€4.50" },
+                            { name: "Latte", desc: "Espresso with steamed milk", price: "€4.50" },
+                            { name: "Freddo Espresso", desc: "Iced espresso", price: "€4.00" },
+                            { name: "Freddo Cappuccino", desc: "Iced cappuccino", price: "€4.50" }
+                        ],
+                        "Drinks": [
+                            { name: "Mojito", desc: "Refreshing cocktail with mint, lime, and rum", price: "€8.00" },
+                            { name: "Pina Colada", desc: "A tropical blend of pineapple, coconut, and rum", price: "€9.00" },
+                            { name: "Greek Frappe", desc: "Traditional Greek iced coffee", price: "€4.00" }
+                        ],
+                        "Appetizers": [
+                            { name: "Tzatziki", desc: "Creamy yogurt dip with cucumber and garlic", price: "€5.00" },
+                            { name: "Greek Salad", desc: "Tomatoes, cucumbers, olives, and feta cheese", price: "€7.00" },
+                            { name: "Saganaki", desc: "Fried cheese with lemon", price: "€6.00" }
+                        ],
+                        "Main Courses": [
+                            { name: "Moussaka", desc: "Layered eggplant, minced meat, and béchamel sauce", price: "€12.00" },
+                            { name: "Grilled Sea Bass", desc: "Freshly caught sea bass, grilled to perfection", price: "€15.00" },
+                            { name: "Souvlaki", desc: "Grilled meat skewers served with pita bread and tzatziki", price: "€10.00" }
+                        ]
+                    }
+                }
+            };
+
+            let currentLang = 'greek';
+
+            function updateMenu(language) {
+                document.querySelector('.header h1').textContent = menuData[language].header;
+                document.querySelector('.header p').textContent = menuData[language].subHeader;
+
+                const categories = document.querySelectorAll('.menu h2');
+                const sections = document.querySelectorAll('.menu-section');
+                categories.forEach((category, index) => {
+                    category.textContent = menuData[language].categories[index];
+                });
+
+                sections.forEach((section, index) => {
+                    const items = menuData[language].items[menuData[language].categories[index]];
+                    section.innerHTML = '';
+                    items.forEach(item => {
+                        const menuItem = document.createElement('div');
+                        menuItem.classList.add('menu-item');
+                        menuItem.innerHTML = `
+                            <div>
+                                <h3>${item.name}</h3>
+                                <p>${item.desc}</p>
+                            </div>
+                            <div class="price">${item.price}</div>
+                        `;
+                        section.appendChild(menuItem);
+                    });
+                });
+
+                const langFlag = document.querySelector('.lang-button img');
+                langFlag.src = language === 'greek' ? 'english-flag.png' : 'greek-flag.png';
+            }
+
+            function switchLanguage() {
+                currentLang = currentLang === 'greek' ? 'english' : 'greek';
+                updateMenu(currentLang);
+            }
+
+            headers.forEach((header, index) => {
+                header.addEventListener('click', function() {
+                    sections.forEach(section => section.style.display = 'none');
+                    sections[index].style.display = 'block';
+                });
+            });
+
+            updateMenu(currentLang); // Initial menu update
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>Καλοκαιρινό Μπαρ στη Νέα Φώκαια, Χαλκιδική</h1>
+        <p>Απολαύστε τα δροσιστικά μας ποτά και το νόστιμο φαγητό δίπλα στη θάλασσα</p>
+        <div id="lang-button" class="lang-button" onclick="switchLanguage()">
+            <img src="greek-flag.png" alt="Greek Flag">
+        </div>
+    </div>
+    <div class="menu">
+
+        <h2>Καφές</h2>
+        <div class="menu-section" id="coffee-section">
+            <!-- Coffee items will be populated here by JavaScript -->
+        </div>
+
+        <h2>Ποτά</h2>
+        <div class="menu-section" id="drinks-section">
+            <!-- Drinks items will be populated here by JavaScript -->
+        </div>
+
+        <h2>Ορεκτικά</h2>
+        <div class="menu-section" id="appetizers-section">
+            <!-- Appetizers items will be populated here by JavaScript -->
+        </div>
+
+        <h2>Κυρίως Πιάτα</h2>
+        <div class="menu-section" id="main-courses-section">
+            <!-- Main courses items will be populated here by JavaScript -->
+        </div>
+    </div>
+</body>
+</html>
