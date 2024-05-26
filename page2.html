@@ -59,6 +59,23 @@
             width: 30px;
             height: 20px;
         }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons a {
+            margin: 10px;
+            padding: 10px 20px;
+            background: rgba(0, 102, 204, 0.8); /* Greek blue */
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        .buttons a:hover {
+            background: rgba(0, 102, 204, 1); /* Darker blue on hover */
+        }
         .menu {
             max-width: 800px;
             margin: 20px auto;
@@ -152,7 +169,7 @@
                         "Appetizers": [
                             { name: "Tzatziki", desc: "Creamy yogurt dip with cucumber and garlic", price: "€5.00" },
                             { name: "Greek Salad", desc: "Tomatoes, cucumbers, olives, and feta cheese", price: "€7.00" },
-                            { name: "Saganaki", desc: "Fried cheese with lemon", price: "€6.00" }
+                                                        { name: "Saganaki", desc: "Fried cheese with lemon", price: "€6.00" }
                         ],
                         "Main Courses": [
                             { name: "Moussaka", desc: "Layered eggplant, minced meat, and béchamel sauce", price: "€12.00" },
@@ -166,7 +183,7 @@
             let currentLang = 'greek';
 
             function updateMenu(language) {
-                                document.querySelector('.header h1').textContent = menuData[language].header;
+                document.querySelector('.header h1').textContent = menuData[language].header;
                 document.querySelector('.header p').textContent = menuData[language].subHeader;
 
                 const categories = document.querySelectorAll('.menu h2');
@@ -223,6 +240,11 @@
         <div id="lang-button" class="lang-button" onclick="switchLanguage()">
             <img src="greek-flag.png" alt="Greek Flag">
         </div>
+        <div class="buttons">
+            <a href="menu.html">Μενού</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="location.html">Τοποθεσία</a>
+        </div>
     </div>
     <div class="menu">
         <h2>Καφές</h2>
@@ -248,4 +270,4 @@
 </body>
 </html>
 
-                    
+                                
