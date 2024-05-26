@@ -126,6 +126,9 @@
                     menuTitle: "Μενού",
                     aboutButton: "Σχετικά",
                     contactButton: "Επικοινωνία",
+                    clubMenu: "Λέσχη",
+                    clubBarMenu: "Μπαρ Λέσχης",
+                    beachBarMenu: "Κάτω Μπαρ",
                     categories: ["Ποτά", "Ορεκτικά", "Κυρίως Πιάτα"],
                     items: {
                         "Ποτά": [
@@ -151,6 +154,9 @@
                     menuTitle: "Menu",
                     aboutButton: "About",
                     contactButton: "Contact us",
+                    clubMenu: "Club",
+                    clubBarMenu: "Club Bar",
+                    beachBarMenu: "Beach Bar",
                     categories: ["Drinks", "Appetizers", "Main Courses"],
                     items: {
                         "Drinks": [
@@ -182,6 +188,10 @@
 
                 document.querySelector('#about').textContent = menuData[language].aboutButton;
                 document.querySelector('#contact').textContent = menuData[language].contactButton;
+                
+                document.querySelector('#clubMenu').textContent = menuData[language].clubMenu;
+                document.querySelector('#clubBarMenu').textContent = menuData[language].clubBarMenu;
+                document.querySelector('#beachBarMenu').textContent = menuData[language].beachBarMenu;
                 
                 const categories = document.querySelectorAll('.menu h2');
                 const sections = document.querySelectorAll('.menu-section');
@@ -242,9 +252,9 @@
             <img src="img/gr-flag.png" alt="Language Flag">
         </div>
         <div class="buttons">
-            <a href="menu.html">Κάτω μπάρ</a>
-            <a href="gallery.html">Μπάρ λέσχης</a>
-            <a href="location.html">Λέσχη</a>
+            <a id="#clubMenu" href="club_menu.html">Κάτω μπάρ</a>
+            <a id="#clubBarMenu" href="club_bar_menu.html">Μπάρ λέσχης</a>
+            <a id="#beachBarMenu" href="beach_bar_menu.html">Λέσχη</a>
         </div>
     </div>
     <div class="menu">
