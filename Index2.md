@@ -1,6 +1,4 @@
-layout: page
-title: "index2"
-permalink: /index2/
+
 
 <!DOCTYPE html>
 <html lang="en">
