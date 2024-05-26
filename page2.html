@@ -123,6 +123,9 @@
                 greek: {
                     header: "ΚΑΑΥ Νέα Φώκαια Χαλκιδική",
                     subHeader: "Ουζερί",
+                    menuTitle: "Μενού",
+                    aboutButton: "Σχετικά",
+                    contactButton: "Επικοινωνία",
                     categories: ["Ποτά", "Ορεκτικά", "Κυρίως Πιάτα"],
                     items: {
                         "Ποτά": [
@@ -145,6 +148,9 @@
                 english: {
                     header: "ΚΑΑΥ Nea Fokea Halkidiki",
                     subHeader: "Ouzeri",
+                    menuTitle: "Menu",
+                    aboutButton: "About",
+                    contactButton: "Contact us",
                     categories: ["Drinks", "Appetizers", "Main Courses"],
                     items: {
                         "Drinks": [
@@ -172,6 +178,11 @@
                 document.querySelector('.header h1').textContent = menuData[language].header;
                 document.querySelector('.header p').textContent = menuData[language].subHeader;
 
+                document.querySelector('.menu h1').textContent = menuData[language].menuTitle;
+
+                document.querySelector('#about').textContent = menuData[language].aboutButton;
+                document.querySelector('#contuct').textContent = menuData[language].contactButton;
+                
                 const categories = document.querySelectorAll('.menu h2');
                 const sections = document.querySelectorAll('.menu-section');
                 categories.forEach((category, index) => {
@@ -222,8 +233,8 @@
 <body>
     <div class="header">
         <div class="nav">
-            <a href="about.html">Σχετικά</a>
-            <a href="contact.html">Επικοινωνία</a>
+            <a id="about" href="about.html">Σχετικά</a>
+            <a id="contact" href="contact.html">Επικοινωνία</a>
         </div>
         <h1>ΚΑΑΥ Νέα Φώκαια Χαλκιδική</h1>
         <p>Ουζερί</p>
@@ -237,6 +248,8 @@
         </div>
     </div>
     <div class="menu">
+        <h1>Μενού</h1>
+        
         <h2>Ποτά</h2>
         <div class="menu-section" id="drinks-section">
             <!-- Drinks items will be populated here by JavaScript -->
