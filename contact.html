@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Επικοινωνία - Καλοκαιρινό Μπαρ στη Νέα Φώκαια, Χαλκιδική</title>
+    <title>Επικοινωνία - ΚΑΑΥ Νέα Φώκαια Χαλκιδική</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -25,14 +25,6 @@
             height: 100%;
             background: rgba(255, 255, 255, 0.7); /* White overlay with 70% opacity */
             z-index: -1;
-        }
-        .header {
-            background: rgba(0, 102, 204, 0.8); /* Greek blue with opacity */
-            color: white;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .nav {
             display: flex;
@@ -60,49 +52,48 @@
             width: 30px;
             height: 20px;
         }
+        .header {
+            background: rgba(0, 102, 204, 0.8); /* Greek blue with opacity */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
         .content {
             max-width: 800px;
+            height: 100%;
             margin: 20px auto;
-            background: white;
+            background: rgba(255, 255, 255, 0.05); /* White overlay with 5% opacity */
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        h1, h2, p {
-            margin: 0 0 20px;
-        }
-        h1 {
+        .content h2 {
             color: #0066cc; /* Greek blue */
-        }
-        h2 {
-            color: #333;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-        label {
-            margin-bottom: 10px;
-            color: #0066cc; /* Greek blue */
-        }
-        input, textarea {
-            padding: 10px;
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 10px;
             margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            padding: 10px;
-            background: rgba(0, 102, 204, 0.8); /* Greek blue */
-            color: white;
-            border: none;
-            border-radius: 4px;
             cursor: pointer;
-            transition: background 0.3s;
+            font-family: 'Georgia', serif; /* Serif font for headings */
         }
-        button:hover {
-            background: rgba(0, 102, 204, 1); /* Darker blue on hover */
+        .content-item {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Georgia', serif; /* Serif font for menu items */
         }
+        .content-item h3 {
+            margin: 0;
+            padding: 0;
+        }
+        .content-item p {
+            margin: 5px 0 0;
+        }
+        .content-section {
+            display: none;
+        }
+        
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -111,32 +102,32 @@
             const contactData = {
                 greek: {
                     header: "Επικοινωνία",
-                    sections: [
-                        {
-                            title: "Επικοινωνήστε μαζί μας",
-                            text: "Μπορείτε να μας βρείτε στη Νέα Φώκαια, Χαλκιδική. Για κρατήσεις ή οποιεσδήποτε ερωτήσεις, παρακαλούμε χρησιμοποιήστε τη φόρμα παρακάτω ή επικοινωνήστε μαζί μας στα παρακάτω στοιχεία."
-                        }
-                    ],
-                    form: {
-                        name: "Όνομα",
-                        email: "Email",
-                        message: "Μήνυμα",
-                        submit: "Αποστολή"
+                    sections: ["Τηλ. Γραφείου Επικοινωνίας", "Τηλ. Λέσχης", "Τηλ. Ουζερί"],
+                    items: {
+                        "Τηλ. Γραφείου Επικοινωνίας": [
+                            { number: "2310192604"}
+                        ],
+                        "Τηλ. Λέσχης": [
+                            { number: "2310202324"}
+                        ],
+                        "Τηλ. Ουζερί": [
+                            { number: "2310420696"}
+                        ]
                     }
                 },
                 english: {
                     header: "Contact Us",
-                    sections: [
-                        {
-                            title: "Get in Touch",
-                            text: "You can find us in Nea Fokea, Halkidiki. For reservations or any inquiries, please use the form below or contact us through the details provided."
-                        }
-                    ],
-                    form: {
-                        name: "Name",
-                        email: "Email",
-                        message: "Message",
-                        submit: "Submit"
+                    sections: ["Communication Office Phone", "Club Phone", "Ouzeri Phone"],
+                    items: {
+                        "Communication Office Phone": [
+                            { number: "2310192604"}
+                        ],
+                        "Club Phone": [
+                            { number: "2310202324"}
+                        ],
+                        "Ouzeri Phone": [
+                            { number: "2310420696"}
+                        ]
                     }
                 }
             };
@@ -146,24 +137,29 @@
             function updateContent(language) {
                 document.querySelector('.content h1').textContent = contactData[language].header;
 
-                const sections = document.querySelector('.content .info');
-                sections.innerHTML = '';
-                contactData[language].sections.forEach(section => {
-                    const sectionElement = document.createElement('div');
-                    sectionElement.innerHTML = `
-                        <h2>${section.title}</h2>
-                        <p>${section.text}</p>
-                    `;
-                    sections.appendChild(sectionElement);
+                const categories = document.querySelectorAll('.content h2');
+                const sections = document.querySelectorAll('.content-section');
+                categories.forEach((category, index) => {
+                    category.textContent = contactData[language].categories[index];
                 });
 
-                document.querySelector('label[for="name"]').textContent = contactData[language].form.name;
-                document.querySelector('label[for="email"]').textContent = contactData[language].form.email;
-                document.querySelector('label[for="message"]').textContent = contactData[language].form.message;
-                document.querySelector('button').textContent = contactData[language].form.submit;
+                sections.forEach((section, index) => {
+                    const items = contactData[language].items[contactData[language].categories[index]];
+                    section.innerHTML = '';
+                    items.forEach(item => {
+                        const contactItem = document.createElement('div');
+                        contactItem.classList.add('content-item');
+                        contactItem.innerHTML = `
+                            <div>
+                                <h3>${item.number}</h3>
+                            </div>
+                        `;
+                        section.appendChild(contactItem);
+                    });
+                });
 
                 const langFlag = document.querySelector('.lang-button img');
-                langFlag.src = language === 'greek' ? 'english-flag.png' : 'greek-flag.png';
+                langFlag.src = language === 'greek' ? 'img/uk-flag.png' : 'img/gr-flag.png';
             }
 
             function switchLanguage() {
@@ -171,8 +167,10 @@
                 updateContent(currentLang);
             }
 
-            langButton.addEventListener('click', switchLanguage);
-
+            langButton.addEventListener('click', function() {
+                switchLanguage();
+            });
+            
             updateContent(currentLang); // Initial content update
         });
     </script>
@@ -184,31 +182,25 @@
             <a href="about.html">Σχετικά</a>
         </div>
         <h1>Επικοινωνία</h1>
-        <div id="lang-button" class="lang-button" onclick="switchLanguage()">
-            <img src="greek-flag.png" alt="Greek Flag">
-        </div>
-        <div class="buttons">
-            <a href="menu.html">Μενού</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="location.html">Τοποθεσία</a>
+        <div id="lang-button" class="lang-button">
+            <img src="img/gr-flag.png" alt="Language Flag">
         </div>
     </div>
     <div class="content">
-        <div class="info">
-            <!-- Contact information will be populated by JavaScript -->
+        <h2>Τηλ. Γραφείου Επικοινωνίας</h2>
+        <div class="content-section" id="communication-office-section">
+            <!-- Communication Office info will be populated here by JavaScript -->
         </div>
-        <form action="submit_form.php" method="post">
-            <label for="name">Όνομα</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="message">Μήνυμα</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-            
-            <button type="submit">Αποστολή</button>
-        </form>
+
+        <h2>Τηλ. Λέσχης</h2>
+        <div class="content-section" id="club-section">
+            <!-- Club info will be populated here by JavaScript -->
+        </div>
+
+        <h2>Τηλ. Ουζερί</h2>
+        <div class="content-section" id="ouzeri-section">
+            <!-- Ouzeri info will be populated here by JavaScript -->
+        </div>
     </div>
 </body>
 </html>
