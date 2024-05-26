@@ -89,7 +89,7 @@
             const menuData = {
                 greek: {
                     header: "ΚΑΑΥ Νέα Φώκαια Χαλκιδική",
-                    subHeader: "Μενού",
+                    subHeader: "",
                     categories: ["Καφές", "Αναψυκτικά", "Ποτά", "Φαγητό"],
                     items: {
                         "Καφές": [
@@ -118,7 +118,7 @@
                 },
                 english: {
                     header: "ΚΑΑΥ Nea Fokea Halkidiki",
-                    subHeader: "Menu",
+                    subHeader: "",
                     categories: ["Coffee", "Drinks", "Alcohol drinks", "Food"],
                     items: {
                         "Coffee": [
@@ -151,7 +151,7 @@
 
             function updateMenu(language) {
                 document.querySelector('.header h1').textContent = menuData[language].header;
-                document.querySelector('.header ,h2').textContent = menuData[language].subHeader;
+                document.querySelector('.header ,p').textContent = menuData[language].subHeader;
 
                 const categories = document.querySelectorAll('.menu h2');
                 const sections = document.querySelectorAll('.menu-section');
@@ -203,12 +203,14 @@
 <body>
     <div class="header">
         <h1>ΚΑΑΥ Νέα Φώκαια Χαλκιδική</h1>
-        <h2>Μενού</h2>
+        <p></p>
         <div id="lang-button" class="lang-button">
             <img src="img/gr-flag.png" alt="Language Flag">
         </div>
     </div>
     <div class="menu">
+        
+        <h1>Μενού</h1>
 
         <h2>Καφές</h2>
         <div class="menu-section" id="coffee-section">
