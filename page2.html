@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Καλοκαιρινό Μπαρ στη Νέα Φώκαια, Χαλκιδική</title>
+    <title>ΚΑΑΥ Νέα Φώκαια Χαλκιδική</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -121,17 +121,10 @@
 
             const menuData = {
                 greek: {
-                    header: "Καλοκαιρινό Μπαρ στη Νέα Φώκαια, Χαλκιδική",
-                    subHeader: "Απολαύστε τα δροσιστικά μας ποτά και το νόστιμο φαγητό δίπλα στη θάλασσα",
-                    categories: ["Καφές", "Ποτά", "Ορεκτικά", "Κυρίως Πιάτα"],
+                    header: "ΚΑΑΥ Νέα Φώκαια Χαλκιδική",
+                    subHeader: "Ουζερί",
+                    categories: ["Ποτά", "Ορεκτικά", "Κυρίως Πιάτα"],
                     items: {
-                        "Καφές": [
-                            { name: "Εσπρέσο", desc: "Πλούσιος και αρωματικός καφές", price: "€3.00" },
-                            { name: "Καπουτσίνο", desc: "Εσπρέσο με αφρόγαλα", price: "€4.50" },
-                            { name: "Λάτε", desc: "Εσπρέσο με ζεστό γάλα", price: "€4.50" },
-                            { name: "Φρέντο Εσπρέσο", desc: "Παγωμένος εσπρέσο", price: "€4.00" },
-                            { name: "Φρέντο Καπουτσίνο", desc: "Παγωμένος καπουτσίνο", price: "€4.50" }
-                        ],
                         "Ποτά": [
                             { name: "Μοχίτο", desc: "Δροσιστικό κοκτέιλ με μέντα, λάιμ και ρούμι", price: "€8.00" },
                             { name: "Πίνα Κολάδα", desc: "Τροπικό μείγμα από ανανά, καρύδα και ρούμι", price: "€9.00" },
@@ -150,17 +143,10 @@
                     }
                 },
                 english: {
-                    header: "Summer Bar in Nea Fokea, Halkidiki",
-                    subHeader: "Enjoy our refreshing drinks and delicious food by the sea",
-                    categories: ["Coffee", "Drinks", "Appetizers", "Main Courses"],
+                    header: "ΚΑΑΥ Nea Fokea Halkidiki",
+                    subHeader: "Ouzeri",
+                    categories: ["Drinks", "Appetizers", "Main Courses"],
                     items: {
-                        "Coffee": [
-                            { name: "Espresso", desc: "Rich and aromatic shot of coffee", price: "€3.00" },
-                            { name: "Cappuccino", desc: "Espresso with steamed milk and foam", price: "€4.50" },
-                            { name: "Latte", desc: "Espresso with steamed milk", price: "€4.50" },
-                            { name: "Freddo Espresso", desc: "Iced espresso", price: "€4.00" },
-                            { name: "Freddo Cappuccino", desc: "Iced cappuccino", price: "€4.50" }
-                        ],
                         "Drinks": [
                             { name: "Mojito", desc: "Refreshing cocktail with mint, lime, and rum", price: "€8.00" },
                             { name: "Pina Colada", desc: "A tropical blend of pineapple, coconut, and rum", price: "€9.00" },
@@ -210,13 +196,17 @@
                 });
 
                 const langFlag = document.querySelector('.lang-button img');
-                langFlag.src = language === 'greek' ? 'english-flag.png' : 'greek-flag.png';
+                langFlag.src = language === 'greek' ? 'img/uk-flag.png' : 'img/gr-flag.png';
             }
 
             function switchLanguage() {
                 currentLang = currentLang === 'greek' ? 'english' : 'greek';
                 updateMenu(currentLang);
             }
+
+            langButton.addEventListener('click', function() {
+                switchLanguage();
+            });
 
             headers.forEach((header, index) => {
                 header.addEventListener('click', function() {
@@ -235,23 +225,18 @@
             <a href="about.html">Σχετικά</a>
             <a href="contact.html">Επικοινωνία</a>
         </div>
-        <h1>Καλοκαιρινό Μπαρ στη Νέα Φώκαια, Χαλκιδική</h1>
-        <p>Απολαύστε τα δροσιστικά μας ποτά και το νόστιμο φαγητό δίπλα στη θάλασσα</p>
-        <div id="lang-button" class="lang-button" onclick="switchLanguage()">
-            <img src="greek-flag.png" alt="Greek Flag">
+        <h1>ΚΑΑΥ Νέα Φώκαια Χαλκιδική</h1>
+        <p>Ουζερί</p>
+        <div id="lang-button" class="lang-button">
+            <img src="img/gr-flag.png" alt="Language Flag">
         </div>
         <div class="buttons">
-            <a href="menu.html">Μενού</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="location.html">Τοποθεσία</a>
+            <a href="menu.html">Κάτω μπάρ</a>
+            <a href="gallery.html">Μπάρ λέσχης</a>
+            <a href="location.html">Λέσχη</a>
         </div>
     </div>
     <div class="menu">
-        <h2>Καφές</h2>
-        <div class="menu-section" id="coffee-section">
-            <!-- Coffee items will be populated here by JavaScript -->
-        </div>
-
         <h2>Ποτά</h2>
         <div class="menu-section" id="drinks-section">
             <!-- Drinks items will be populated here by JavaScript -->
