@@ -1,1 +1,214 @@
 
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Επικοινωνία - Καλοκαιρινό Μπαρ στη Νέα Φώκαια, Χαλκιδική</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('church-background.jpg') no-repeat center center fixed; /* Church image */
+            background-size: cover;
+            background-attachment: fixed; /* Make background stay in place */
+            color: #333;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.7); /* White overlay with 70% opacity */
+            z-index: -1;
+        }
+        .header {
+            background: rgba(0, 102, 204, 0.8); /* Greek blue with opacity */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .nav {
+            display: flex;
+            justify-content: flex-start;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+        .lang-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+        .lang-button img {
+            width: 30px;
+            height: 20px;
+        }
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, p {
+            margin: 0 0 20px;
+        }
+        h1 {
+            color: #0066cc; /* Greek blue */
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 10px;
+            color: #0066cc; /* Greek blue */
+        }
+        input, textarea {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            background: rgba(0, 102, 204, 0.8); /* Greek blue */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: rgba(0, 102, 204, 1); /* Darker blue on hover */
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const langButton = document.getElementById('lang-button');
+
+            const contactData = {
+                greek: {
+                    header: "Επικοινωνία",
+                    sections: [
+                        {
+                            title: "Επικοινωνήστε μαζί μας",
+                            text: "Μπορείτε να μας βρείτε στη Νέα Φώκαια, Χαλκιδική. Για κρατήσεις ή οποιεσδήποτε ερωτήσεις, παρακαλούμε χρησιμοποιήστε τη φόρμα παρακάτω ή επικοινωνήστε μαζί μας στα παρακάτω στοιχεία."
+                        }
+                    ],
+                    form: {
+                        name: "Όνομα",
+                        email: "Email",
+                        message: "Μήνυμα",
+                        submit: "Αποστολή"
+                    }
+                },
+                english: {
+                    header: "Contact Us",
+                    sections: [
+                        {
+                            title: "Get in Touch",
+                            text: "You can find us in Nea Fokea, Halkidiki. For reservations or any inquiries, please use the form below or contact us through the details provided."
+                        }
+                    ],
+                    form: {
+                        name: "Name",
+                        email: "Email",
+                        message: "Message",
+                        submit: "Submit"
+                    }
+                }
+            };
+
+            let currentLang = 'greek';
+
+            function updateContent(language) {
+                document.querySelector('.content h1').textContent = contactData[language].header;
+
+                const sections = document.querySelector('.content .info');
+                sections.innerHTML = '';
+                contactData[language].sections.forEach(section => {
+                    const sectionElement = document.createElement('div');
+                    sectionElement.innerHTML = `
+                        <h2>${section.title}</h2>
+                        <p>${section.text}</p>
+                    `;
+                    sections.appendChild(sectionElement);
+                });
+
+                document.querySelector('label[for="name"]').textContent = contactData[language].form.name;
+                document.querySelector('label[for="email"]').textContent = contactData[language].form.email;
+                document.querySelector('label[for="message"]').textContent = contactData[language].form.message;
+                document.querySelector('button').textContent = contactData[language].form.submit;
+
+                const langFlag = document.querySelector('.lang-button img');
+                langFlag.src = language === 'greek' ? 'english-flag.png' : 'greek-flag.png';
+            }
+
+            function switchLanguage() {
+                currentLang = currentLang === 'greek' ? 'english' : 'greek';
+                updateContent(currentLang);
+            }
+
+            langButton.addEventListener('click', switchLanguage);
+
+            updateContent(currentLang); // Initial content update
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="nav">
+            <a href="index.html">Αρχική</a>
+            <a href="about.html">Σχετικά</a>
+        </div>
+        <h1>Επικοινωνία</h1>
+        <div id="lang-button" class="lang-button" onclick="switchLanguage()">
+            <img src="greek-flag.png" alt="Greek Flag">
+        </div>
+        <div class="buttons">
+            <a href="menu.html">Μενού</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="location.html">Τοποθεσία</a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="info">
+            <!-- Contact information will be populated by JavaScript -->
+        </div>
+        <form action="submit_form.php" method="post">
+            <label for="name">Όνομα</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Μήνυμα</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            
+            <button type="submit">Αποστολή</button>
+        </form>
+    </div>
+</body>
+</html>
