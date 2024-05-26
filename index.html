@@ -9,9 +9,6 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background: url('img/nea-fokea-tower-2.jpg') no-repeat center center fixed; /* Church image */
-            background-size: cover;
-            background-attachment: fixed; /* Make background stay in place */
             color: #333;
             position: relative;
         }
@@ -24,6 +21,11 @@
             height: 100%;
             background: rgba(255, 255, 255, 0.7); /* White overlay with 70% opacity */
             z-index: -1;
+        }
+        .background {
+            background: url('img/nea-fokea-tower-2.jpg') no-repeat center center fixed; /* Church image */
+            background-size: cover;
+            background-attachment: fixed; /* Make background stay in place */
         }
         .header {
             background: rgba(0, 102, 204, 0.8); /* Greek blue with opacity */
@@ -205,6 +207,8 @@
     </script>
 </head>
 <body>
+    <div class="background">
+        
     <div class="header">
         <h1>ΚΑΑΥ Νέα Φώκαια Χαλκιδική</h1>
         <p></p>
@@ -235,6 +239,8 @@
         <div class="menu-section" id="food-section">
             <!-- Food items will be populated here by JavaScript -->
         </div>
+    </div>
+
     </div>
 </body>
 </html>
