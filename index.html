@@ -90,6 +90,7 @@
                 greek: {
                     header: "ΚΑΑΥ Νέα Φώκαια Χαλκιδική",
                     subHeader: "",
+                    menuTitle: "Μενού",
                     categories: ["Καφές", "Αναψυκτικά", "Ποτά", "Φαγητό"],
                     items: {
                         "Καφές": [
@@ -119,6 +120,7 @@
                 english: {
                     header: "ΚΑΑΥ Nea Fokea Halkidiki",
                     subHeader: "",
+                    menuTitle: "Menu",
                     categories: ["Coffee", "Drinks", "Alcohol drinks", "Food"],
                     items: {
                         "Coffee": [
@@ -152,6 +154,8 @@
             function updateMenu(language) {
                 document.querySelector('.header h1').textContent = menuData[language].header;
                 document.querySelector('.header p').textContent = menuData[language].subHeader;
+
+                document.querySelector('.menu h1').textContent = menuData[language].menuTitle;
 
                 const categories = document.querySelectorAll('.menu h2');
                 const sections = document.querySelectorAll('.menu-section');
