@@ -35,8 +35,10 @@
         }
         .nav {
             display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
+            justify-content: flex-start;
+            position: absolute;
+            top: 20px;
+            left: 20px;
         }
         .nav a {
             color: white;
@@ -164,8 +166,8 @@
             let currentLang = 'greek';
 
             function updateMenu(language) {
-                document.querySelector('.header h1').textContent = menuData[language].header;
-                                document.querySelector('.header p').textContent = menuData[language].subHeader;
+                                document.querySelector('.header h1').textContent = menuData[language].header;
+                document.querySelector('.header p').textContent = menuData[language].subHeader;
 
                 const categories = document.querySelectorAll('.menu h2');
                 const sections = document.querySelectorAll('.menu-section');
@@ -246,4 +248,4 @@
 </body>
 </html>
 
-        
+                    
