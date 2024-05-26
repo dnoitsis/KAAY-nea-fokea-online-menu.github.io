@@ -1,1 +1,174 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Σχετικά - Καλοκαιρινό Μπαρ στη Νέα Φώκαια, Χαλκιδική</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('church-background.jpg') no-repeat center center fixed; /* Church image */
+            background-size: cover;
+            background-attachment: fixed; /* Make background stay in place */
+            color: #333;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.7); /* White overlay with 70% opacity */
+            z-index: -1;
+        }
+        .header {
+            background: rgba(0, 102, 204, 0.8); /* Greek blue with opacity */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .nav {
+            display: flex;
+            justify-content: flex-start;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+        .lang-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+        .lang-button img {
+            width: 30px;
+            height: 20px;
+        }
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, p {
+            margin: 0 0 20px;
+        }
+        h1 {
+            color: #0066cc; /* Greek blue */
+        }
+        h2 {
+            color: #333;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const langButton = document.getElementById('lang-button');
+
+            const contentData = {
+                greek: {
+                    header: "Σχετικά με εμάς",
+                    sections: [
+                        {
+                            title: "Η Ιστορία μας",
+                            text: "Το καλοκαιρινό μας μπαρ στη Νέα Φώκαια, Χαλκιδική, ιδρύθηκε το 2005 με στόχο να προσφέρει δροσιστικά ποτά και εξαιρετικό φαγητό σε ένα όμορφο περιβάλλον δίπλα στη θάλασσα."
+                        },
+                        {
+                            title: "Η Φιλοσοφία μας",
+                            text: "Η φιλοσοφία μας είναι απλή: να προσφέρουμε ποιοτικά προϊόντα και υπηρεσίες με ζεστή φιλοξενία. Είμαστε περήφανοι που χρησιμοποιούμε φρέσκα και τοπικά υλικά στις συνταγές μας."
+                        },
+                        {
+                            title: "Η Ομάδα μας",
+                            text: "Η ομάδα μας αποτελείται από έμπειρους επαγγελματίες που αγαπούν τη δουλειά τους και είναι αφοσιωμένοι στην παροχή άριστης εξυπηρέτησης στους πελάτες μας."
+                        }
+                    ]
+                },
+                english: {
+                    header: "About Us",
+                    sections: [
+                        {
+                            title: "Our History",
+                            text: "Our summer bar in Nea Fokea, Halkidiki, was established in 2005 with the aim of offering refreshing drinks and excellent food in a beautiful seaside setting."
+                        },
+                        {
+                            title: "Our Philosophy",
+                            text: "Our philosophy is simple: to offer quality products and services with warm hospitality. We are proud to use fresh and local ingredients in our recipes."
+                        },
+                        {
+                            title: "Our Team",
+                            text: "Our team consists of experienced professionals who love their work and are dedicated to providing excellent service to our customers."
+                        }
+                    ]
+                }
+            };
+
+            let currentLang = 'greek';
+
+            function updateContent(language) {
+                document.querySelector('.content h1').textContent = contentData[language].header;
+
+                const sections = document.querySelector('.content');
+                sections.innerHTML = '<h1>' + contentData[language].header + '</h1>';
+
+                contentData[language].sections.forEach(section => {
+                    const sectionElement = document.createElement('div');
+                    sectionElement.innerHTML = `
+                        <h2>${section.title}</h2>
+                        <p>${section.text}</p>
+                    `;
+                    sections.appendChild(sectionElement);
+                });
+
+                const langFlag = document.querySelector('.lang-button img');
+                langFlag.src = language === 'greek' ? 'english-flag.png' : 'greek-flag.png';
+            }
+
+            function switchLanguage() {
+                currentLang = currentLang === 'greek' ? 'english' : 'greek';
+                updateContent(currentLang);
+            }
+
+            langButton.addEventListener('click', switchLanguage);
+
+            updateContent(currentLang); // Initial content update
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="nav">
+            <a href="index.html">Αρχική</a>
+            <a href="contact.html">Επικοινωνία</a>
+        </div>
+        <h1>Σχετικά με εμάς</h1>
+        <div id="lang-button" class="lang-button" onclick="switchLanguage()">
+            <img src="greek-flag.png" alt="Greek Flag">
+        </div>
+        <div class="buttons">
+            <a href="menu.html">Μενού</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="location.html">Τοποθεσία</a>
+        </div>
+    </div>
+    <div class="content">
+        <!-- Content will be populated by JavaScript -->
+    </div>
+</body>
+</html>
 
