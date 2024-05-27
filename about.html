@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="el">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Σχετικά - Καλοκαιρινό Μπαρ στη Νέα Φώκαια, Χαλκιδική</title>
+    <title>Σχετικά - ΚΑΑΥ Νέα Φώκαια Χαλκιδική</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -24,14 +25,6 @@
             height: 100%;
             background: rgba(255, 255, 255, 0.7); /* White overlay with 70% opacity */
             z-index: -1;
-        }
-        .header {
-            background: rgba(0, 102, 204, 0.8); /* Greek blue with opacity */
-            color: white;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .nav {
             display: flex;
@@ -59,84 +52,77 @@
             width: 30px;
             height: 20px;
         }
+        .header {
+            background: rgba(0, 102, 204, 0.8); /* Greek blue with opacity */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
         .content {
             max-width: 800px;
+            height: 100%;
             margin: 20px auto;
-            background: white;
+            background: rgba(255, 255, 255, 0.05); /* White overlay with 5% opacity */
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        h1, h2, p {
-            margin: 0 0 20px;
-        }
-        h1 {
+        .content h2 {
             color: #0066cc; /* Greek blue */
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            font-family: 'Georgia', serif; /* Serif font for headings */
         }
-        h2 {
-            color: #333;
+        .content-item {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Georgia', serif; /* Serif font for menu items */
         }
+        .content-item h3 {
+            margin: 0;
+            padding: 0;
+        }
+        .content-item p {
+            margin: 5px 0 0;
+        }
+        .content-section {
+            display: none;
+        }
+        
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const langButton = document.getElementById('lang-button');
 
-            const contentData = {
+            const aboutData = {
                 greek: {
-                    header: "Σχετικά με εμάς",
-                    sections: [
-                        {
-                            title: "Η Ιστορία μας",
-                            text: "Το καλοκαιρινό μας μπαρ στη Νέα Φώκαια, Χαλκιδική, ιδρύθηκε το 2005 με στόχο να προσφέρει δροσιστικά ποτά και εξαιρετικό φαγητό σε ένα όμορφο περιβάλλον δίπλα στη θάλασσα."
-                        },
-                        {
-                            title: "Η Φιλοσοφία μας",
-                            text: "Η φιλοσοφία μας είναι απλή: να προσφέρουμε ποιοτικά προϊόντα και υπηρεσίες με ζεστή φιλοξενία. Είμαστε περήφανοι που χρησιμοποιούμε φρέσκα και τοπικά υλικά στις συνταγές μας."
-                        },
-                        {
-                            title: "Η Ομάδα μας",
-                            text: "Η ομάδα μας αποτελείται από έμπειρους επαγγελματίες που αγαπούν τη δουλειά τους και είναι αφοσιωμένοι στην παροχή άριστης εξυπηρέτησης στους πελάτες μας."
-                        }
-                    ]
+                    header: "Σχετικά",
+                    contact: "Επικοινωνία",
+                    index: "Πίσω"
                 },
                 english: {
-                    header: "About Us",
-                    sections: [
-                        {
-                            title: "Our History",
-                            text: "Our summer bar in Nea Fokea, Halkidiki, was established in 2005 with the aim of offering refreshing drinks and excellent food in a beautiful seaside setting."
-                        },
-                        {
-                            title: "Our Philosophy",
-                            text: "Our philosophy is simple: to offer quality products and services with warm hospitality. We are proud to use fresh and local ingredients in our recipes."
-                        },
-                        {
-                            title: "Our Team",
-                            text: "Our team consists of experienced professionals who love their work and are dedicated to providing excellent service to our customers."
-                        }
-                    ]
+                    header: "About",
+                    contact: "Contact us",
+                    index: "Back"
                 }
             };
 
             let currentLang = 'greek';
 
             function updateContent(language) {
-                document.querySelector('.content h1').textContent = contentData[language].header;
+                document.querySelector('.header h1').textContent = aboutData[language].header;
 
-                const sections = document.querySelector('.content');
-                sections.innerHTML = '<h1>' + contentData[language].header + '</h1>';
+                document.querySelector('#contact').textContent = aboutData[language].contact;
+                document.querySelector('#index').textContent = aboutData[language].index;
 
-                contentData[language].sections.forEach(section => {
-                    const sectionElement = document.createElement('div');
-                    sectionElement.innerHTML = `
-                        <h2>${section.title}</h2>
-                        <p>${section.text}</p>
-                    `;
-                    sections.appendChild(sectionElement);
-                });
-
+                
                 const langFlag = document.querySelector('.lang-button img');
-                langFlag.src = language === 'greek' ? 'english-flag.png' : 'greek-flag.png';
+                langFlag.src = language === 'greek' ? 'img/uk-flag.png' : 'img/gr-flag.png';
             }
 
             function switchLanguage() {
@@ -144,8 +130,10 @@
                 updateContent(currentLang);
             }
 
-            langButton.addEventListener('click', switchLanguage);
-
+            langButton.addEventListener('click', function() {
+                switchLanguage();
+            });
+            
             updateContent(currentLang); // Initial content update
         });
     </script>
@@ -153,22 +141,16 @@
 <body>
     <div class="header">
         <div class="nav">
-            <a href="index.html">Αρχική</a>
-            <a href="contact.html">Επικοινωνία</a>
+            <a id="index" href="index.html">Αρχική</a>
+            <a id="contact" href="contact.html">Επικοινωνία</a>
         </div>
-        <h1>Σχετικά με εμάς</h1>
-        <div id="lang-button" class="lang-button" onclick="switchLanguage()">
-            <img src="greek-flag.png" alt="Greek Flag">
-        </div>
-        <div class="buttons">
-            <a href="menu.html">Μενού</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="location.html">Τοποθεσία</a>
+        <h1>Σχετικά</h1>
+        <div id="lang-button" class="lang-button">
+            <img src="img/gr-flag.png" alt="Language Flag">
         </div>
     </div>
     <div class="content">
-        <!-- Content will be populated by JavaScript -->
+        
     </div>
 </body>
 </html>
-
