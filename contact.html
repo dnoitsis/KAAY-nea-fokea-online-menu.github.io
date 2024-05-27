@@ -102,33 +102,19 @@
             const contactData = {
                 greek: {
                     header: "Επικοινωνία",
-                    categories: ["Τηλ. Γραφείου Επικοινωνίας", "Τηλ. Λέσχης", "Τηλ. Ουζερί"],
-                    items: {
-                        "Τηλ. Γραφείου Επικοινωνίας": [
-                            { number: "2310192604"}
-                        ],
-                        "Τηλ. Λέσχης": [
-                            { number: "2310202324"}
-                        ],
-                        "Τηλ. Ουζερί": [
-                            { number: "2310420696"}
-                        ]
-                    }
+                    contact1: "Τηλ. Γραφείου Επικοινωνίας",
+                    contact2: "Τηλ. Λέσχης",
+                    contact3: "Τηλ. Ουζερί",
+                    about: "Σχετικά",
+                    index: "Πίσω"
                 },
                 english: {
                     header: "Contact Us",
-                    categories: ["Communication Office Phone", "Club Phone", "Ouzeri Phone"],
-                    items: {
-                        "Communication Office Phone": [
-                            { number: "2310192604"}
-                        ],
-                        "Club Phone": [
-                            { number: "2310202324"}
-                        ],
-                        "Ouzeri Phone": [
-                            { number: "2310420696"}
-                        ]
-                    }
+                    contact1: "Communication Office Phone",
+                    contact2: "Club Phone",
+                    contact3: "Ouzeri Phone",
+                    about: "About",
+                    index: "Back"
                 }
             };
 
@@ -137,27 +123,14 @@
             function updateContent(language) {
                 document.querySelector('.content h1').textContent = contactData[language].header;
 
-                const categories = document.querySelectorAll('.content h2');
-                const sections = document.querySelectorAll('.content-section');
-                categories.forEach((category, index) => {
-                    category.textContent = contactData[language].categories[index];
-                });
+                document.querySelector('#about').textContent = contactData[language].about;
+                document.querySelector('#index').textContent = contactData[language].index;
 
-                sections.forEach((section, index) => {
-                    const items = contactData[language].items[contactData[language].categories[index]];
-                    section.innerHTML = '';
-                    items.forEach(item => {
-                        const contactItem = document.createElement('div');
-                        contactItem.classList.add('content-item');
-                        contactItem.innerHTML = `
-                            <div>
-                                <h3>${item.number}</h3>
-                            </div>
-                        `;
-                        section.appendChild(contactItem);
-                    });
-                });
+                document.querySelector('#contact1').textContent = contactData[language].contact1;
+                document.querySelector('#contact2').textContent = contactData[language].contact2;
+                document.querySelector('#contact3').textContent = contactData[language].contact3;
 
+                
                 const langFlag = document.querySelector('.lang-button img');
                 langFlag.src = language === 'greek' ? 'img/uk-flag.png' : 'img/gr-flag.png';
             }
@@ -178,8 +151,8 @@
 <body>
     <div class="header">
         <div class="nav">
-            <a href="index.html">Αρχική</a>
-            <a href="about.html">Σχετικά</a>
+            <a id="index" href="index.html">Αρχική</a>
+            <a id="about" href="about.html">Σχετικά</a>
         </div>
         <h1>Επικοινωνία</h1>
         <div id="lang-button" class="lang-button">
@@ -187,19 +160,19 @@
         </div>
     </div>
     <div class="content">
-        <h2>Τηλ. Γραφείου Επικοινωνίας</h2>
+        <h2 id="contact1">Τηλ. Γραφείου Επικοινωνίας</h2>
         <div class="content-section" id="communication-office-section">
-            <!-- Communication Office info will be populated here by JavaScript -->
+            <h3>2310192604</h3>
         </div>
 
-        <h2>Τηλ. Λέσχης</h2>
+        <h2 id="contact2">Τηλ. Λέσχης</h2>
         <div class="content-section" id="club-section">
-            <!-- Club info will be populated here by JavaScript -->
+            <h3>2310192604</h3>
         </div>
 
-        <h2>Τηλ. Ουζερί</h2>
+        <h2 id="contact3">Τηλ. Ουζερί</h2>
         <div class="content-section" id="ouzeri-section">
-            <!-- Ouzeri info will be populated here by JavaScript -->
+            <h3>2310192604</h3>
         </div>
     </div>
 </body>
