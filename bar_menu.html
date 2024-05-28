@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ΚΑΑΥ Νέας Φώκαιας Χαλκιδική online menu</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            position: relative;
+            background: url('img/nea-fokea-tower-2.jpg') no-repeat center center fixed;
+            background-repeat: no-repeat;
+            background-position: top center;
+            background-attachment: fixed;
+            background-size: cover;
+            height: 100%;
+            width: 100%;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.7); /* White overlay with 70% opacity */
+            z-index: -1;
+        }
+        .background {
+        }
+        .header {
+            background: rgba(0, 102, 204, 0.8); /* Greek blue with opacity */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .lang-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+        .lang-button img {
+            width: 30px;
+            height: 20px;
+        }
+        .menu {
+            max-width: 800px;
+            height: 100%;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.05); /* White overlay with 5% opacity */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .menu h2 {
+            color: #0066cc; /* Greek blue */
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            font-family: 'Georgia', serif; /* Serif font for headings */
+        }
+        .menu-item {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Georgia', serif; /* Serif font for menu items */
+        }
+        .menu-item h3 {
+            margin: 0;
+            padding: 0;
+        }
+        .menu-item p {
+            margin: 5px 0 0;
+        }
+        .price {
+            font-weight: bold;
+            color: #0066cc; /* Greek blue */
+        }
+        .menu-section {
+            display: none;
+        }
+        .nav {
+            display: flex;
+            justify-content: flex-start;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media Query for Smartphones */
+        @media (max-width: 768px) {
+            body {
+                background: url('img/nea-fokea-tower-3.png') no-repeat center center fixed;
+                background-size: cover;
+                background-attachment: fixed;
+            }
+            body::before {
+                background: rgba(255, 255, 255, 0.8);
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.menu-section');
+            const headers = document.querySelectorAll('.menu h2');
+            const langButton = document.getElementById('lang-button');
+
+            const menuData = {
+                greek: {
+                    header: "ΚΑΑΥ Νέας Φώκαιας Χαλκιδική",
+                    subHeader: "",
+                    aboutButton: "Σχετικά",
+                    contactButton: "Επικοινωνία",
+                    menuTitle: "Μενού",
+                    categories: ["Καφές", "Αναψυκτικά", "Ποτά", "Φαγητό"],
+                    items: {
+                        "Καφές": [
+                            { name: "Εσπρέσο", desc: "", price: "€1.00" },
+                            { name: "Καπουτσίνο", desc: "", price: "€1.50" },
+                            { name: "Λάτε", desc: "", price: "€2.50" },
+                            { name: "Φρέντο Εσπρέσο", desc: "", price: "€2.00" },
+                            { name: "Φρέντο Καπουτσίνο", desc: "", price: "€2.50" },
+                            { name: "Εσπρέσο", desc: "", price: "€1.00" },
+                            { name: "Καπουτσίνο", desc: "", price: "€1.50" },
+                            { name: "Λάτε", desc: "", price: "€2.50" },
+                            { name: "Φρέντο Εσπρέσο", desc: "", price: "€2.00" },
+                            { name: "Φρέντο Καπουτσίνο", desc: "", price: "€2.50" },
+                            { name: "Εσπρέσο", desc: "", price: "€1.00" },
+                            { name: "Καπουτσίνο", desc: "", price: "€1.50" },
+                            { name: "Λάτε", desc: "", price: "€2.50" },
+                            { name: "Φρέντο Εσπρέσο", desc: "", price: "€2.00" },
+                            { name: "Φρέντο Καπουτσίνο", desc: "", price: "€2.50" }
+                        ],
+                        "Αναψυκτικά": [
+                            { name: "Κόκα κόλα", desc: "", price: "€1.00" },
+                            { name: "Λεμονάδα", desc: "", price: "€1.00" },
+                            { name: "Σπράιτ", desc: "", price: "€1.00" }
+                        ],
+                        "Ποτά": [
+                            { name: "Βότκα", desc: "", price: "€5.00" },
+                            { name: "Ουίσκι", desc: "", price: "€7.00" },
+                            { name: "Τζίν", desc: "", price: "€6.00" }
+                        ],
+                        "Φαγητό": [
+                            { name: "Πίτσα", desc: "", price: "€2.00" },
+                            { name: "Κουλούρι", desc: "", price: "€0.50" },
+                            { name: "Σπανακόπιτα", desc: "", price: "€1.00" }
+                        ]
+                    }
+                },
+                english: {
+                    header: "ΚΑΑΥ Nea Fokea Halkidiki",
+                    subHeader: "",
+                    aboutButton: "About",
+                    contactButton: "Contact us",
+                    menuTitle: "Menu",
+                    categories: ["Coffee", "Drinks", "Alcohol drinks", "Food"],
+                    items: {
+                        "Coffee": [
+                            { name: "Espresso", desc: "", price: "€1.00" },
+                            { name: "Cappuccino", desc: "", price: "€1.50" },
+                            { name: "Latte", desc: "", price: "€2.50" },
+                            { name: "Freddo Espresso", desc: "", price: "€2.00" },
+                            { name: "Freddo Cappuccino", desc: "", price: "€2.50" }
+                        ],
+                        "Drinks": [
+                            { name: "Coca cola", desc: "", price: "€1.00" },
+                            { name: "Lemonade", desc: "", price: "€1.00" },
+                            { name: "Sprite", desc: "", price: "€1.00" }
+                        ],
+                        "Alcohol drinks": [
+                            { name: "Vodka", desc: "", price: "€5.00" },
+                            { name: "Whiskey", desc: "", price: "€7.00" },
+                            { name: "Gin", desc: "", price: "€6.00" }
+                        ],
+                        "Food": [
+                            { name: "Pizza", desc: "", price: "€2.00" },
+                            { name: "Koulouri", desc: "", price: "€0.50" },
+                            { name: "Spanakopita", desc: "", price: "€1.00" }
+                        ]
+                    }
+                }
+            };
+
+            let currentLang = 'greek';
+
+            function updateMenu(language) {
+                document.querySelector('.header h1').textContent = menuData[language].header;
+                document.querySelector('.header p').textContent = menuData[language].subHeader;
+
+                document.querySelector('#about').textContent = menuData[language].aboutButton;
+                document.querySelector('#contact').textContent = menuData[language].contactButton;
+
+                document.querySelector('.menu h1').textContent = menuData[language].menuTitle;
+
+                const categories = document.querySelectorAll('.menu h2');
+                const sections = document.querySelectorAll('.menu-section');
+                categories.forEach((category, index) => {
+                    category.textContent = menuData[language].categories[index];
+                });
+
+                sections.forEach((section, index) => {
+                    const items = menuData[language].items[menuData[language].categories[index]];
+                    section.innerHTML = '';
+                    items.forEach(item => {
+                        const menuItem = document.createElement('div');
+                        menuItem.classList.add('menu-item');
+                        menuItem.innerHTML = `
+                            <div>
+                                <h3>${item.name}</h3>
+                                <p>${item.desc}</p>
+                            </div>
+                            <div class="price">${item.price}</div>
+                        `;
+                        section.appendChild(menuItem);
+                    });
+                });
+
+                const langFlag = document.querySelector('.lang-button img');
+                langFlag.src = language === 'greek' ? 'img/uk-flag.png' : 'img/gr-flag.png';
+            }
+
+            function switchLanguage() {
+                currentLang = currentLang === 'greek' ? 'english' : 'greek';
+                updateMenu(currentLang);
+            }
+            
+            langButton.addEventListener('click', function() {
+                switchLanguage();
+            });
+            
+            headers.forEach((header, index) => {
+                header.addEventListener('click', function() {
+                    sections.forEach(section => section.style.display = 'none');
+                    sections[index].style.display = 'block';
+                });
+            });
+
+            updateMenu(currentLang); // Initial menu update
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="nav">
+            <a id="about" href="about.html">Σχετικά</a>
+            <a id="contact" href="contact.html">Επικοινωνία</a>
+        </div>
+        <br>
+        <h1>ΚΑΑΥ Νέας Φώκαιας Χαλκιδική</h1>
+        <p></p>
+        <div id="lang-button" class="lang-button">
+            <img src="img/gr-flag.png" alt="Language Flag">
+        </div>
+    </div>
+    <div class="background">
+        <div class="menu">
+            
+            <h1>Μενού</h1>
+    
+            <h2>Καφές</h2>
+            <div class="menu-section" id="coffee-section">
+                <!-- Coffee items will be populated here by JavaScript -->
+            </div>
+    
+            <h2>Αναψυκτικά</h2>
+            <div class="menu-section" id="drinks-section">
+                <!-- Drinks items will be populated here by JavaScript -->
+            </div>
+    
+            <h2>Ποτά</h2>
+            <div class="menu-section" id="alcohol-drinks-section">
+                <!-- Alcohol drinks items will be populated here by JavaScript -->
+            </div>
+    
+            <h2>Φαγητό</h2>
+            <div class="menu-section" id="food-section">
+                <!-- Food items will be populated here by JavaScript -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
