@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ΚΑΑΥ Νέα Φώκαια Χαλκιδική online menu</title>
+    <title>ΚΑΑΥ Νέας Φώκαια Χαλκιδική online menu</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -11,7 +11,7 @@
             padding: 0;
             color: #333;
             position: relative;
-            background: url('img/nea-fokea-tower-2.jpg') no-repeat center center fixed; /* Church image */
+
             background-repeat: no-repeat;
             background-position: top center;
             background-attachment: fixed;
@@ -29,7 +29,7 @@
             z-index: -1;
         }
         .background {
-            
+            background: url('img/nea-fokea-tower-2.jpg') no-repeat center center fixed;
         }
         .header {
             background: rgba(0, 102, 204, 0.8); /* Greek blue with opacity */
@@ -86,6 +86,22 @@
         .menu-section {
             display: none;
         }
+        .nav {
+            display: flex;
+            justify-content: flex-start;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -97,6 +113,8 @@
                 greek: {
                     header: "ΚΑΑΥ Νέα Φώκαια Χαλκιδική",
                     subHeader: "",
+                    aboutButton: "Σχετικά",
+                    contactButton: "Επικοινωνία",
                     menuTitle: "Μενού",
                     categories: ["Καφές", "Αναψυκτικά", "Ποτά", "Φαγητό"],
                     items: {
@@ -137,6 +155,8 @@
                 english: {
                     header: "ΚΑΑΥ Nea Fokea Halkidiki",
                     subHeader: "",
+                    aboutButton: "About",
+                    contactButton: "Contact us",
                     menuTitle: "Menu",
                     categories: ["Coffee", "Drinks", "Alcohol drinks", "Food"],
                     items: {
@@ -171,6 +191,9 @@
             function updateMenu(language) {
                 document.querySelector('.header h1').textContent = menuData[language].header;
                 document.querySelector('.header p').textContent = menuData[language].subHeader;
+
+                document.querySelector('#about').textContent = menuData[language].aboutButton;
+                document.querySelector('#contact').textContent = menuData[language].contactButton;
 
                 document.querySelector('.menu h1').textContent = menuData[language].menuTitle;
 
@@ -222,42 +245,42 @@
     </script>
 </head>
 <body>
-    <div class="background">
-        
     <div class="header">
+        <div class="nav">
+            <a id="about" href="about.html">Σχετικά</a>
+            <a id="contact" href="contact.html">Επικοινωνία</a>
+        </div>
         <h1>ΚΑΑΥ Νέα Φώκαια Χαλκιδική</h1>
         <p></p>
         <div id="lang-button" class="lang-button">
             <img src="img/gr-flag.png" alt="Language Flag">
         </div>
     </div>
-    <div class="menu">
-        
-        <h1>Μενού</h1>
-
-        <h2>Καφές</h2>
-        <div class="menu-section" id="coffee-section">
-            <!-- Coffee items will be populated here by JavaScript -->
+    <div class="background">
+        <div class="menu">
+            
+            <h1>Μενού</h1>
+    
+            <h2>Καφές</h2>
+            <div class="menu-section" id="coffee-section">
+                <!-- Coffee items will be populated here by JavaScript -->
+            </div>
+    
+            <h2>Αναψυκτικά</h2>
+            <div class="menu-section" id="drinks-section">
+                <!-- Drinks items will be populated here by JavaScript -->
+            </div>
+    
+            <h2>Ποτά</h2>
+            <div class="menu-section" id="alcohol-drinks-section">
+                <!-- Alcohol drinks items will be populated here by JavaScript -->
+            </div>
+    
+            <h2>Φαγητό</h2>
+            <div class="menu-section" id="food-section">
+                <!-- Food items will be populated here by JavaScript -->
+            </div>
         </div>
-
-        <h2>Αναψυκτικά</h2>
-        <div class="menu-section" id="drinks-section">
-            <!-- Drinks items will be populated here by JavaScript -->
-        </div>
-
-        <h2>Ποτά</h2>
-        <div class="menu-section" id="alcohol-drinks-section">
-            <!-- Alcohol drinks items will be populated here by JavaScript -->
-        </div>
-
-        <h2>Φαγητό</h2>
-        <div class="menu-section" id="food-section">
-            <!-- Food items will be populated here by JavaScript -->
-        </div>
-    </div>
-
-        <a href="page2.html">Go to the Second Page</a>
-
     </div>
 </body>
 </html>
