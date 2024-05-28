@@ -10,11 +10,15 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background: url('church-background.jpg') no-repeat center center fixed; /* Church image */
-            background-size: cover;
-            background-attachment: fixed; /* Make background stay in place */
             color: #333;
             position: relative;
+            background: url('img/nea-fokea-tower-2.jpg') no-repeat center center fixed;
+            background-repeat: no-repeat;
+            background-position: top center;
+            background-attachment: fixed;
+            background-size: cover;
+            height: 100%;
+            width: 100%;
         }
         body::before {
             content: '';
@@ -93,7 +97,18 @@
         .content-section {
             display: none;
         }
-        
+
+        /* Media Query for Smartphones */
+        @media (max-width: 768px) {
+            body {
+                background: url('img/nea-fokea-tower-3.png') no-repeat center center fixed;
+                background-size: cover;
+                background-attachment: fixed;
+            }
+            body::before {
+                background: rgba(255, 255, 255, 0.8);
+            }
+        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -103,12 +118,14 @@
                 greek: {
                     header: "Σχετικά",
                     contact: "Επικοινωνία",
-                    index: "Πίσω"
+                    index: "Πίσω",
+                    aboutText: "Τα ΚΑΑΥ (Κέντρα Αποκατάστασης Απωλειών Υγείας) είναι εγκαταστάσεις που ανήκουν στις Ελληνικές Ένοπλες Δυνάμεις και προσφέρουν υπηρεσίες ανάπαυσης και αναψυχής για το στρατιωτικό και πολιτικό προσωπικό των Ενόπλων Δυνάμεων, καθώς και για τις οικογένειές τους. Τα ΚΑΑΥ παρέχουν διάφορες υπηρεσίες όπως καταλύματα, εστιατόρια, αθλητικές δραστηριότητες και πρόσβαση σε παραλίες."
                 },
                 english: {
                     header: "About",
                     contact: "Contact us",
-                    index: "Back"
+                    index: "Back",
+                    aboutText: "The K.A.A.Y. (Centres for Recovery of Health Losses) are facilities owned by the Hellenic Armed Forces that provide rest and recreation services for military and civilian personnel of the Armed Forces, as well as their families. The K.A.A.Y. offers various services such as accommodation, restaurants, sports activities, and access to beaches."
                 }
             };
 
@@ -118,8 +135,9 @@
                 document.querySelector('.header h1').textContent = aboutData[language].header;
 
                 document.querySelector('#contact').textContent = aboutData[language].contact;
-                document.querySelector('#index').textContent = aboutData[language].index;
+                document.querySelector('#aboutText').textContent = aboutData[language].aboutText;
 
+                document.querySelector('#index').textContent = aboutData[language].index;
                 
                 const langFlag = document.querySelector('.lang-button img');
                 langFlag.src = language === 'greek' ? 'img/uk-flag.png' : 'img/gr-flag.png';
@@ -150,7 +168,7 @@
         </div>
     </div>
     <div class="content">
-        
+        <p id="aboutText">Τα ΚΑΑΥ (Κέντρα Αποκατάστασης Απωλειών Υγείας) είναι εγκαταστάσεις που ανήκουν στις Ελληνικές Ένοπλες Δυνάμεις και προσφέρουν υπηρεσίες ανάπαυσης και αναψυχής για το στρατιωτικό και πολιτικό προσωπικό των Ενόπλων Δυνάμεων, καθώς και για τις οικογένειές τους. Τα ΚΑΑΥ παρέχουν διάφορες υπηρεσίες όπως καταλύματα, εστιατόρια, αθλητικές δραστηριότητες και πρόσβαση σε παραλίες.</p>
     </div>
 </body>
 </html>
