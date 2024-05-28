@@ -10,11 +10,15 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background: url('church-background.jpg') no-repeat center center fixed; /* Church image */
-            background-size: cover;
-            background-attachment: fixed; /* Make background stay in place */
             color: #333;
             position: relative;
+            background: url('img/nea-fokea-tower-2.jpg') no-repeat center center fixed;
+            background-repeat: no-repeat;
+            background-position: top center;
+            background-attachment: fixed;
+            background-size: cover;
+            height: 100%;
+            width: 100%;
         }
         body::before {
             content: '';
@@ -93,7 +97,18 @@
         .content-section {
             display: none;
         }
-        
+
+        /* Media Query for Smartphones */
+        @media (max-width: 768px) {
+            body {
+                background: url('img/nea-fokea-tower-3.png') no-repeat center center fixed;
+                background-size: cover;
+                background-attachment: fixed;
+            }
+            body::before {
+                background: rgba(255, 255, 255, 0.8);
+            }
+        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -161,7 +176,7 @@
     </div>
     <div class="content">
         <h2 id="contact1">Τηλ. Γραφείου Επικοινωνίας2</h2>
-        <h3>2310192604</h3>>
+        <h3>2310192604</h3>
 
         <h2 id="contact2">Τηλ. Λέσχης</h2>
         <h3>2310192604</h3>
