@@ -227,20 +227,20 @@
                         section.classList.remove('show');
                         setTimeout(() => {
                             section.style.display = 'none';
-                        }, 300); // 0.5 second delay
+                        }, 100); // 0.5 second delay
                     } else {
                         sections.forEach(sec => {
                             sec.classList.remove('show');
                             setTimeout(() => {
                                 sec.style.display = 'none';
-                            }, 300);
+                            }, 100);
                         });
                         setTimeout(() => {
                             section.style.display = 'block';
                             setTimeout(() => {
                                 section.classList.add('show');
                             }, 10); // Short delay to allow display block to take effect
-                        }, 300);
+                        }, 100);
                     }
                 });
             });
