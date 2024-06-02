@@ -66,6 +66,15 @@
             cursor: pointer;
             font-family: 'Georgia', serif; /* Serif font for headings */
         }
+        .menu-section {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .menu-section.show {
+            display: block;
+            opacity: 1;
+        }
         .menu-item {
             margin-bottom: 20px;
             display: flex;
@@ -281,10 +290,15 @@
                 switchLanguage();
             });
             
-            headers.forEach((header, index) => {
+            headers.forEach(header => {
                 header.addEventListener('click', function() {
-                    sections.forEach(section => section.style.display = 'none');
-                    sections[index].style.display = 'block';
+                    const section = this.nextElementSibling;
+                    if (section.classList.contains('show')) {
+                        section.classList.remove('show');
+                    } else {
+                        sections.forEach(sec => sec.classList.remove('show'));
+                        section.classList.add('show');
+                    }
                 });
             });
 
@@ -306,7 +320,7 @@
         </div>
     </div>
     <div class="background">
-        <div class="menu">
+        <div class="menu" id="menu">
             
             <h1>Μενού</h1>
 
