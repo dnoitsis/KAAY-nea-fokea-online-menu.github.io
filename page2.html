@@ -223,9 +223,20 @@
                     const section = this.nextElementSibling;
                     if (section.classList.contains('show')) {
                         section.classList.remove('show');
+                        setTimeout(() => {
+                            section.style.display = 'none';
+                        }, 500); // 0.5 second delay
                     } else {
-                        sections.forEach(sec => sec.classList.remove('show'));
-                        section.classList.add('show');
+                        sections.forEach(sec => {
+                            sec.classList.remove('show');
+                            setTimeout(() => {
+                                sec.style.display = 'none';
+                            }, 500);
+                        });
+                        section.style.display = 'block';
+                        setTimeout(() => {
+                            section.classList.add('show');
+                        }, 10); // Short delay to allow display block to take effect
                     }
                 });
             });
