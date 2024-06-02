@@ -233,10 +233,12 @@
                                 sec.style.display = 'none';
                             }, 500);
                         });
-                        section.style.display = 'block';
                         setTimeout(() => {
-                            section.classList.add('show');
-                        }, 10); // Short delay to allow display block to take effect
+                            section.style.display = 'block';
+                            setTimeout(() => {
+                                section.classList.add('show');
+                            }, 10); // Short delay to allow display block to take effect
+                        }, 500);
                     }
                 });
             });
