@@ -61,6 +61,7 @@
         }
         .buttons {
             margin-top: 20px;
+            text-align: center;
         }
         .buttons a {
             display: inline-block;
@@ -78,10 +79,10 @@
         .menu {
             padding: 20px;
             background: rgba(255, 255, 255, 0.9);
-            margin: 20px auto;
-            max-width: 800px;
+            margin: 20px 0;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
         }
         .menu h2 {
             cursor: pointer;
@@ -89,13 +90,13 @@
         }
         .menu-section {
             display: none;
-
+            opacity: 0;
             transform: translateY(-10px);
-
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
         }
         .menu-section.show {
             display: block;
-
+            opacity: 1;
             transform: translateY(0);
         }
         .menu-item {
@@ -192,8 +193,6 @@
                 }
             };
 
-            let currentLang = 'greek';
-
             function updateMenu(language) {
                 document.querySelector('.header h1').textContent = menuData[language].header;
                 document.querySelector('.header p').textContent = menuData[language].subHeader;
@@ -227,20 +226,20 @@
                         section.classList.remove('show');
                         setTimeout(() => {
                             section.style.display = 'none';
-                        }, 100); // 0.5 second delay
+                        }, 500); // 0.5 second delay
                     } else {
                         sections.forEach(sec => {
                             sec.classList.remove('show');
                             setTimeout(() => {
                                 sec.style.display = 'none';
-                            }, 100);
+                            }, 500);
                         });
                         setTimeout(() => {
                             section.style.display = 'block';
                             setTimeout(() => {
                                 section.classList.add('show');
                             }, 10); // Short delay to allow display block to take effect
-                        }, 100);
+                        }, 500);
                     }
                 });
             });
