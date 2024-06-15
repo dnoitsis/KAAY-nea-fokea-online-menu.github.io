@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ΚΑΑΥ Νέας Φώκαιας Χαλκιδική online menu</title>
     <style>
-        body {
+        body {            
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            color: #333;
-            position: relative;
-            background: url('img/nea-fokea-tower-2.jpg') no-repeat center center fixed;
+            background: url('img/ouzeri-2.jpg') no-repeat center center fixed;  /* 'img/nea-fokea-tower-2.jpg' */
             background-repeat: no-repeat;
             background-position: top center;
             background-attachment: fixed;
             background-size: cover;
-            height: 100%;
-            width: 100%;
+            color: #333;
+            position: relative;
+            display: flex;
+            flex-direction: column;
         }
         body::before {
             content: '';
@@ -32,7 +32,7 @@
         .background {
         }
         .header {
-            background: rgba(0, 102, 204, 0.8); /* Greek blue with opacity */
+            background: rgba(86 204 0, 0.8); /* Greek blue with opacity */
             color: white;
             padding: 20px;
             text-align: center;
@@ -50,13 +50,13 @@
             height: 20px;
         }
         .menu {
-            max-width: 800px;
-            height: 100%;
-            margin: 20px auto;
-            background: rgba(255, 255, 255, 0.05); /* White overlay with 5% opacity */
+            flex: 1;
             padding: 20px;
+            background: rgba(255, 255, 255, 0.4);
+            margin: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
         }
         .menu h2 {
             color: #0066cc; /* Greek blue */
@@ -65,6 +65,17 @@
             margin-bottom: 20px;
             cursor: pointer;
             font-family: 'Georgia', serif; /* Serif font for headings */
+        }
+        .menu-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+        .menu-section.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
         .menu-item {
             margin-bottom: 20px;
@@ -106,7 +117,7 @@
         /* Media Query for Smartphones */
         @media (max-width: 768px) {
             body {
-                background: url('img/nea-fokea-tower-3.png') no-repeat center center fixed;
+                background: url('img/ouzeri-2.jpg') no-repeat center center fixed;
                 background-size: cover;
                 background-attachment: fixed;
             }
@@ -124,75 +135,111 @@
             const menuData = {
                 greek: {
                     header: "ΚΑΑΥ Νέας Φώκαιας Χαλκιδική",
-                    subHeader: "",
+                    subHeader: "Ουζερί",
                     aboutButton: "Σχετικά",
                     contactButton: "Επικοινωνία",
                     menuTitle: "Μενού",
-                    categories: ["Καφές", "Αναψυκτικά", "Ποτά", "Φαγητό"],
+                    categories: ["Μερίδες", "Ορεκτικά", "Σαλάτες", "Αλοιφές", "Κουβέρ"],
                     items: {
-                        "Καφές": [
-                            { name: "Εσπρέσο", desc: "", price: "€1.00" },
-                            { name: "Καπουτσίνο", desc: "", price: "€1.50" },
-                            { name: "Λάτε", desc: "", price: "€2.50" },
-                            { name: "Φρέντο Εσπρέσο", desc: "", price: "€2.00" },
-                            { name: "Φρέντο Καπουτσίνο", desc: "", price: "€2.50" },
-                            { name: "Εσπρέσο", desc: "", price: "€1.00" },
-                            { name: "Καπουτσίνο", desc: "", price: "€1.50" },
-                            { name: "Λάτε", desc: "", price: "€2.50" },
-                            { name: "Φρέντο Εσπρέσο", desc: "", price: "€2.00" },
-                            { name: "Φρέντο Καπουτσίνο", desc: "", price: "€2.50" },
-                            { name: "Εσπρέσο", desc: "", price: "€1.00" },
-                            { name: "Καπουτσίνο", desc: "", price: "€1.50" },
-                            { name: "Λάτε", desc: "", price: "€2.50" },
-                            { name: "Φρέντο Εσπρέσο", desc: "", price: "€2.00" },
-                            { name: "Φρέντο Καπουτσίνο", desc: "", price: "€2.50" }
+                        "Μερίδες": [
+                            { name: "Γαρίδα στη Σχάρα", desc: "", price: "€5.20" },
+                            { name: "Καλαμάρι Σχάρας", desc: "", price: "€7.80" },
+                            { name: "Καλαμαράκια Τηγανιτά", desc: "", price: "€4.30" },
+                            { name: "Γαρίδες Τηγανητές", desc: "", price: "€5.20" },
+                            { name: "Γαρίδα Σαγανάκι", desc: "", price: "€5.80" },
+                            { name: "Μύδι Τηγανητό", desc: "", price: "€3.10" },
+                            { name: "Μύδι Σαγανάκι", desc: "", price: "€4.20" },
+                            { name: "Χταπόδι Ψητό", desc: "", price: "€7.20" },
+                            { name: "Γάυρος Τηγανιτός", desc: "", price: "€3.30" },
+                            { name: "Ξιφίας", desc: "", price: "€5.80" },
+                            { name: "Γαριδομακαρονάδα", desc: "", price: "€5.10" },
+                            { name: "Μπακαλιάρος Σκορδαλιά", desc: "", price: "€3.40" }
                         ],
-                        "Αναψυκτικά": [
-                            { name: "Κόκα κόλα", desc: "", price: "€1.00" },
-                            { name: "Λεμονάδα", desc: "", price: "€1.00" },
-                            { name: "Σπράιτ", desc: "", price: "€1.00" }
+                        "Ορεκτικά": [
+                            { name: "Πατάτες Τηγανητές Country", desc: "", price: "€1.40" },
+                            { name: "Τυροκροκέτες", desc: "", price: "€2.00" },
+                            { name: "Μπουγιουρντί", desc: "", price: "€3.40" },
+                            { name: "Φέτα", desc: "", price: "€1.80" },
+                            { name: "Φέτα Σαγανάκι", desc: "", price: "€2.00" },
+                            { name: "Φέτα Παναρισμένη με Μέλι-Σουσάμι", desc: "", price: "€3.10" },
+                            { name: "Κολοκυθάκια Τηγανητά", desc: "", price: "€1.10" },
+                            { name: "Μελιτζάνες Τηγανητές", desc: "", price: "€1.40" },
+                            { name: "Ουζομεζές σε Ηλιέλαιο", desc: "", price: "€2.60" }
                         ],
-                        "Ποτά": [
-                            { name: "Βότκα", desc: "", price: "€5.00" },
-                            { name: "Ουίσκι", desc: "", price: "€7.00" },
-                            { name: "Τζίν", desc: "", price: "€6.00" }
+                        "Σαλάτες": [
+                            { name: "Αγγουροντομάτα", desc: "", price: "€1.80" },
+                            { name: "Κρητική", desc: "", price: "€3.40" },
+                            { name: "Βινεγκρέτ", desc: "", price: "€3.80" }
                         ],
-                        "Φαγητό": [
-                            { name: "Πίτσα", desc: "", price: "€2.00" },
-                            { name: "Κουλούρι", desc: "", price: "€0.50" },
-                            { name: "Σπανακόπιτα", desc: "", price: "€1.00" }
+                        "Αλοιφές": [
+                            { name: "Μελιτζανοσαλάτα", desc: "", price: "€1.20" },
+                            { name: "Ρώσικη", desc: "", price: "€1.20" },
+                            { name: "Τζατζίκι", desc: "", price: "€1.20" },
+                            { name: "Τυροκαυτερή", desc: "", price: "€1.20" },
+                            { name: "Φάβα", desc: "", price: "€1.10" },
+                            { name: "Μυκονιάτικη", desc: "", price: "€2.40" }
+                        ],
+                        "Κουβέρ": [
+                            { name: "Κουβέρ", desc: "", price: "€0.20" },
+                            { name: "Στικ Κέτσαπ", desc: "", price: "€0.10" },
+                            { name: "Στικ Μουστάρδα", desc: "", price: "€0.10" },
+                            { name: "Στικ Μαγιονέζα", desc: "", price: "€0.10" },
+                            { name: "Στικ Λάδι", desc: "", price: "€0.30" }
                         ]
                     }
                 },
                 english: {
                     header: "ΚΑΑΥ Nea Fokea Halkidiki",
-                    subHeader: "",
+                    subHeader: "Ouzeri",
                     aboutButton: "About",
                     contactButton: "Contact us",
                     menuTitle: "Menu",
-                    categories: ["Coffee", "Drinks", "Alcohol drinks", "Food"],
+                    categories: ["Main dishes", "Starters", "Salads", "Spreads", "Cover"],
                     items: {
-                        "Coffee": [
-                            { name: "Espresso", desc: "", price: "€1.00" },
-                            { name: "Cappuccino", desc: "", price: "€1.50" },
-                            { name: "Latte", desc: "", price: "€2.50" },
-                            { name: "Freddo Espresso", desc: "", price: "€2.00" },
-                            { name: "Freddo Cappuccino", desc: "", price: "€2.50" }
+                        "Main dishes": [
+                            { name: "Grilled Shrimp", desc: "", price: "€5.20" },
+                            { name: "Grilled Calamari", desc: "", price: "€7.80" },
+                            { name: "Fried Calamari", desc: "", price: "€4.30" },
+                            { name: "Fried Shrimps", desc: "", price: "€5.20" },
+                            { name: "Shrimp Saganaki", desc: "", price: "€5.80" },
+                            { name: "Fried Mussels", desc: "", price: "€3.10" },
+                            { name: "Mussels Saganaki", desc: "", price: "€4.20" },
+                            { name: "Grilled Octopus", desc: "", price: "€7.20" },
+                            { name: "Fried Anchovies", desc: "", price: "€3.30" },
+                            { name: "Swordfish", desc: "", price: "€5.80" },
+                            { name: "Shrimp Pasta", desc: "", price: "€5.10" },
+                            { name: "Skordalia Codfish", desc: "", price: "€3.40" }
                         ],
-                        "Drinks": [
-                            { name: "Coca cola", desc: "", price: "€1.00" },
-                            { name: "Lemonade", desc: "", price: "€1.00" },
-                            { name: "Sprite", desc: "", price: "€1.00" }
+                        "Starters": [
+                            { name: "Country French Fries", desc: "", price: "€1.40" },
+                            { name: "Cheese Croquettes", desc: "", price: "€2.00" },
+                            { name: "Bouyurdi", desc: "", price: "€3.40" },
+                            { name: "Feta", desc: "", price: "€1.80" },
+                            { name: "Feta Saganaki", desc: "", price: "€2.00" },
+                            { name: "Feta Breaded with Honey-Sesame", desc: "", price: "€3.10" },
+                            { name: "Fried Zucchini", desc: "", price: "€1.10" },
+                            { name: "Fried Eggplants", desc: "", price: "€1.40" },
+                            { name: "Ouzo Meze in Sunflower Oil", desc: "", price: "€2.60" }
                         ],
-                        "Alcohol drinks": [
-                            { name: "Vodka", desc: "", price: "€5.00" },
-                            { name: "Whiskey", desc: "", price: "€7.00" },
-                            { name: "Gin", desc: "", price: "€6.00" }
+                        "Salads": [
+                            { name: "Cucumber and Τomato", desc: "", price: "€1.80" },
+                            { name: "Cretan", desc: "", price: "€3.40" },
+                            { name: "Vinaigrette", desc: "", price: "€3.80" }
                         ],
-                        "Food": [
-                            { name: "Pizza", desc: "", price: "€2.00" },
-                            { name: "Koulouri", desc: "", price: "€0.50" },
-                            { name: "Spanakopita", desc: "", price: "€1.00" }
+                        "Spreads": [
+                            { name: "Eggplant salad", desc: "", price: "€1.20" },
+                            { name: "Russian Salad", desc: "", price: "€1.20" },
+                            { name: "Tzatziki", desc: "", price: "€1.20" },
+                            { name: "Spicy Feta Cheese and Pepper Dip", desc: "", price: "€1.20" },
+                            { name: "Fava", desc: "", price: "€1.10" },
+                            { name: "Mykoniatiki", desc: "", price: "€2.40" }
+                        ],
+                        "Cover": [
+                            { name: "Cover Charge", desc: "", price: "€0.20" },
+                            { name: "Ketchup Stick", desc: "", price: "€0.10" },
+                            { name: "Mustard Stick", desc: "", price: "€0.10" },
+                            { name: "Mayonnaise Stick", desc: "", price: "€0.10" },
+                            { name: "Oil Stick", desc: "", price: "€0.30" }
                         ]
                     }
                 }
@@ -205,7 +252,7 @@
                 document.querySelector('.header p').textContent = menuData[language].subHeader;
 
                 document.querySelector('#about').textContent = menuData[language].aboutButton;
-                document.querySelector('#contact').textContent = menuData[language].contactButton;
+                <!-- document.querySelector('#contact').textContent = menuData[language].contactButton; -->
 
                 document.querySelector('.menu h1').textContent = menuData[language].menuTitle;
 
@@ -245,10 +292,28 @@
                 switchLanguage();
             });
             
-            headers.forEach((header, index) => {
+            headers.forEach(header => {
                 header.addEventListener('click', function() {
-                    sections.forEach(section => section.style.display = 'none');
-                    sections[index].style.display = 'block';
+                    const section = this.nextElementSibling;
+                    if (section.classList.contains('show')) {
+                        section.classList.remove('show');
+                        setTimeout(() => {
+                            section.style.display = 'none';
+                        }, 500); // 0.5 second delay
+                    } else {
+                        sections.forEach(sec => {
+                            sec.classList.remove('show');
+                            setTimeout(() => {
+                                sec.style.display = 'none';
+                            }, 500);
+                        });
+                        setTimeout(() => {
+                            section.style.display = 'block';
+                            setTimeout(() => {
+                                section.classList.add('show');
+                            }, 10); // Short delay to allow display block to take effect
+                        }, 500);
+                    }
                 });
             });
 
@@ -260,38 +325,43 @@
     <div class="header">
         <div class="nav">
             <a id="about" href="about.html">Σχετικά</a>
-            <a id="contact" href="contact.html">Επικοινωνία</a>
+            <!-- <a id="contact" href="contact.html">Επικοινωνία</a> -->
         </div>
         <br>
         <h1>ΚΑΑΥ Νέας Φώκαιας Χαλκιδική</h1>
-        <p></p>
+        <p>Ουζερί</p>
         <div id="lang-button" class="lang-button">
             <img src="img/gr-flag.png" alt="Language Flag">
         </div>
     </div>
     <div class="background">
-        <div class="menu">
+        <div class="menu" id="menu">
             
             <h1>Μενού</h1>
-    
-            <h2>Καφές</h2>
-            <div class="menu-section" id="coffee-section">
-                <!-- Coffee items will be populated here by JavaScript -->
+
+            <h2>Μερίδες</h2>
+            <div class="menu-section" id="main-dishes-section">
+                <!-- Main dishes items will be populated here by JavaScript -->
             </div>
     
-            <h2>Αναψυκτικά</h2>
-            <div class="menu-section" id="drinks-section">
-                <!-- Drinks items will be populated here by JavaScript -->
+            <h2>Ορεκτικά</h2>
+            <div class="menu-section" id="starters-section">
+                <!-- Starters items will be populated here by JavaScript -->
             </div>
-    
-            <h2>Ποτά</h2>
-            <div class="menu-section" id="alcohol-drinks-section">
-                <!-- Alcohol drinks items will be populated here by JavaScript -->
+
+            <h2>Σαλάτες</h2>
+            <div class="menu-section" id="salad-section">
+                <!-- Salads items will be populated here by JavaScript -->
             </div>
-    
-            <h2>Φαγητό</h2>
-            <div class="menu-section" id="food-section">
-                <!-- Food items will be populated here by JavaScript -->
+
+            <h2>Αλοιφές</h2>
+            <div class="menu-section" id="spreads-section">
+                <!-- Spreads items will be populated here by JavaScript -->
+            </div>
+
+            <h2>Κουβέρ</h2>
+            <div class="menu-section" id="cover-section">
+                <!-- Cover items will be populated here by JavaScript -->
             </div>
         </div>
     </div>
