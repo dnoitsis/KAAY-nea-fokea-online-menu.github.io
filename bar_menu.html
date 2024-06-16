@@ -137,111 +137,183 @@
             const menuData = {
                 greek: {
                     header: "ΚΑΑΥ Νέας Φώκαιας Χαλκιδική",
-                    subHeader: "Ουζερί",
+                    subHeader: "Μπαρ Λέσχης",
                     aboutButton: "Σχετικά",
                     contactButton: "Επικοινωνία",
                     menuTitle: "Μενού",
-                    categories: ["Μερίδες", "Ορεκτικά", "Σαλάτες", "Αλοιφές", "Κουβέρ"],
+                    categories: ["Καφές", "Τρόφιμα", "Νερό-Χυμοί-Αναψυκτικά", "Κρασιά-Μπύρες-Ποτά", "Έξτρα"],
                     items: {
-                        "Μερίδες": [
-                            { name: "Γαρίδα στη Σχάρα", desc: "", price: "€5.20" },
-                            { name: "Καλαμάρι Σχάρας", desc: "", price: "€7.80" },
-                            { name: "Καλαμαράκια Τηγανιτά", desc: "", price: "€4.30" },
-                            { name: "Γαρίδες Τηγανητές", desc: "", price: "€5.20" },
-                            { name: "Γαρίδα Σαγανάκι", desc: "", price: "€5.80" },
-                            { name: "Μύδι Τηγανητό", desc: "", price: "€3.10" },
-                            { name: "Μύδι Σαγανάκι", desc: "", price: "€4.20" },
-                            { name: "Χταπόδι Ψητό", desc: "", price: "€7.20" },
-                            { name: "Γάυρος Τηγανιτός", desc: "", price: "€3.30" },
-                            { name: "Ξιφίας", desc: "", price: "€5.80" },
-                            { name: "Γαριδομακαρονάδα", desc: "", price: "€5.10" },
-                            { name: "Μπακαλιάρος Σκορδαλιά", desc: "", price: "€3.40" }
+                        "Καφές": [
+                            { name: "Espresso Μονός", desc: "", price: "€0.45" },
+                            { name: "Espresso Διπλός", desc: "", price: "€0.90" },
+                            { name: "Espresso Decaf", desc: "", price: "€0.60" },
+                            { name: "Freddo Espresso", desc: "", price: "€0.90" },
+                            { name: "Freddo Espresso Decaf", desc: "", price: "€1.20" },
+                            { name: "Capuccino", desc: "", price: "€1.00" },
+                            { name: "Freddo Capuccino", desc: "", price: "€1.00" },
+                            { name: "Freddo Capuccino Decaf", desc: "", price: "€1.30" },
+                            { name: "Ελληνικός Καφές Μονός", desc: "", price: "€0.30" },
+                            { name: "Ελληνικός Καφές Διπλός", desc: "", price: "€0.60" },
+                            { name: "Nescafe Φραπέ", desc: "", price: "€0.50" },
+                            { name: "Nescafe Φραπέ Decaf", desc: "", price: "€0.70" },
+                            { name: "Ρόφημα Σοκολάτας (Ζεστή-Κρύα)", desc: "", price: "€1.30" }
                         ],
-                        "Ορεκτικά": [
-                            { name: "Πατάτες Τηγανητές Country", desc: "", price: "€1.40" },
-                            { name: "Τυροκροκέτες", desc: "", price: "€2.00" },
-                            { name: "Μπουγιουρντί", desc: "", price: "€3.40" },
-                            { name: "Φέτα", desc: "", price: "€1.80" },
-                            { name: "Φέτα Σαγανάκι", desc: "", price: "€2.00" },
-                            { name: "Φέτα Παναρισμένη με Μέλι-Σουσάμι", desc: "", price: "€3.10" },
-                            { name: "Κολοκυθάκια Τηγανητά", desc: "", price: "€1.10" },
-                            { name: "Μελιτζάνες Τηγανητές", desc: "", price: "€1.40" },
-                            { name: "Ουζομεζές σε Ηλιέλαιο", desc: "", price: "€2.60" }
+                        "Τρόφιμα": [
+                            { name: "Κρουασάν Bonjour Kiss Πραλ. Φράουλα", desc: "", price: "€1.15" },
+                            { name: "Σάντουιτς Χούτος", desc: "", price: "€1.25" },
+                            { name: "Κρουασάν Χούτος", desc: "", price: "€0.85" },
+                            { name: "Kinder Bueno", desc: "", price: "€0.90" },
+                            { name: "Kinder Bueno White", desc: "", price: "€0.90" },
+                            { name: "ΙΟΝ Σοκολάτα Γάλακτος", desc: "", price: "€1.35" },
+                            { name: "ΙΟΝ Σοκοφρέτα Γάλακτος Κόκκινη", desc: "", price: "€0.50" },
+                            { name: "ΙΟΝ Derby", desc: "", price: "€0.55" },
+                            { name: "Σοκολάτα Παυλίδη 3Bit Μπάρα Φράουλα", desc: "", price: "€1.00" },
+                            { name: "Mars Single", desc: "", price: "€0.85" },
+                            { name: "Γεμιστά Σοκολάτα", desc: "", price: "€0.55" },
+                            { name: "Ξυροί Καρποί Μερίδα", desc: "", price: "€0.35" }
                         ],
-                        "Σαλάτες": [
-                            { name: "Αγγουροντομάτα", desc: "", price: "€1.80" },
-                            { name: "Κρητική", desc: "", price: "€3.40" },
-                            { name: "Βινεγκρέτ", desc: "", price: "€3.80" }
+                        "Νερό-Χυμοί-Αναψυκτικά": [
+                            { name: "Νερό Διός 500ml", desc: "", price: "€0.15" },
+                            { name: "Νερό Θεόνη 500ml", desc: "", price: "€0.15" },
+                            { name: "Αμίτα Πορτοκάλι 100%", desc: "", price: "€0.90" },
+                            { name: "Αμίτα Βύσσινο", desc: "", price: "€0.75" },
+                            { name: "Αμίτα Motion", desc: "", price: "€1.10" },
+                            { name: "Αμίτα Πορτοκάλι-Βερύκοκο-Μήλο", desc: "", price: "€0.75" },
+                            { name: "Αμίτα Free Πορτοκάλι", desc: "", price: "€0.95" },
+                            { name: "Κόκα Κόλα", desc: "", price: "€0.85" },
+                            { name: "Κόκα Κόλα Zero", desc: "", price: "€0.85" },
+                            { name: "Κόκα Κόλα Zero Λεμόνι", desc: "", price: "€0.85" },
+                            { name: "Σπράιτ", desc: "", price: "€0.75" },
+                            { name: "Φάντα Λεμόνι", desc: "", price: "€0.75" },
+                            { name: "Φάντα Πορτοκάλι", desc: "", price: "€0.75" },
+                            { name: "Schweppes Σόδα", desc: "", price: "€0.50" },
+                            { name: "Schweppes Σόδα Λεμόνι", desc: "", price: "€0.75" },
+                            { name: "Schweppes Λεμονάδα-Πορτοκάλι-Γκρέιπφρουτ", desc: "", price: "€0.85" },
+                            { name: "Αριζόνα Τσάι Διάφορα", desc: "", price: "€1.05" },
+                            { name: "Μόνστερ Ενεργειακό Ποτό Διάφορα", desc: "", price: "€1.50" },
+                            { name: "Hell Ενεργειακό Ποτό", desc: "", price: "€0.65" }
                         ],
-                        "Αλοιφές": [
-                            { name: "Μελιτζανοσαλάτα", desc: "", price: "€1.20" },
-                            { name: "Ρώσικη", desc: "", price: "€1.20" },
-                            { name: "Τζατζίκι", desc: "", price: "€1.20" },
-                            { name: "Τυροκαυτερή", desc: "", price: "€1.20" },
-                            { name: "Φάβα", desc: "", price: "€1.10" },
-                            { name: "Μυκονιάτικη", desc: "", price: "€2.40" }
+                        "Κρασιά-Μπύρες-Ποτά": [
+                            { name: "Άλφα 330ml", desc: "", price: "€0.90" },
+                            { name: "Άλφα Με Θαλασσινό Αλάτι 330ml", desc: "", price: "€1.10" },
+                            { name: "Άμστελ 330ml", desc: "", price: "€1.15" },
+                            { name: "Άμστελ Ράντλερ 330ml", desc: "", price: "€1.25" },
+                            { name: "Άμστελ Free 330ml", desc: "", price: "€0.80" },
+                            { name: "Heineken 330ml", desc: "", price: "€1.05" },
+                            { name: "Φιξ 330ml", desc: "", price: "€0.90" },
+                            { name: "Μάμος 330ml", desc: "", price: "€1.00" },
+                            { name: "Βεργίνα 330ml", desc: "", price: "€0.85" },
+                            { name: "Κάιζερ 330ml", desc: "", price: "€1.05" },
+                            { name: "McFarland 330ml", desc: "", price: "€2.75" },
+                            { name: "Corona 330ml", desc: "", price: "€3.25" },
+                            { name: "Sol 330ml", desc: "", price: "€1.95" },
+                            { name: "Bacardi Breezer 275ml Διάφορα", desc: "", price: "€2.45" },
+                            { name: "Ρετσίνα Μαλαματίνα 500ml", desc: "", price: "€1.70" },
+                            { name: "Ούζο Πλωμάρι Με/Χωρίς Γλ. 200ml", desc: "", price: "€4.75" },
+                            { name: "Τσίπουρο Ηδωνικό Με/Χωρίς Γλ. 200ml", desc: "", price: "€5.90" },
+                            { name: "Λε Κοκ Διάφορα", desc: "", price: "€2.10" },
+                            { name: "Vodka Stoli Mini 50ml", desc: "", price: "€2.50" },
+                            { name: "Whisky Johnnie Mini 50ml", desc: "", price: "€2.85" },
+                            { name: "Gin Gordons Mini 50ml", desc: "", price: "€2.35" },
+                            { name: "Κρασί Τζουλιέτα Λευκός Ξηρός 187ml", desc: "", price: "€1.40" },
+                            { name: "Κρασί Τζουλιέτα Λευκός Ημ/κος 187ml", desc: "", price: "€1.40" },
+                            { name: "Κρασί Τζουλιέτα Ερυθρός Ξηρός 187ml", desc: "", price: "€1.40" },
+                            { name: "Κρασί Τζουλιέτα Ροζέ Ημ/ξηρος 187ml", desc: "", price: "€1.40" }
                         ],
-                        "Κουβέρ": [
-                            { name: "Κουβέρ", desc: "", price: "€0.20" },
-                            { name: "Στικ Κέτσαπ", desc: "", price: "€0.10" },
-                            { name: "Στικ Μουστάρδα", desc: "", price: "€0.10" },
-                            { name: "Στικ Μαγιονέζα", desc: "", price: "€0.10" },
-                            { name: "Στικ Λάδι", desc: "", price: "€0.30" }
+                        "Έξτρα": [
+                            { name: "Ποτήρι Διάφανες", desc: "", price: "€0.10" },
+                            { name: "Θήκη 2 θέσεων", desc: "", price: "€0.10" }
                         ]
                     }
                 },
                 english: {
                     header: "ΚΑΑΥ Nea Fokea Halkidiki",
-                    subHeader: "Ouzeri",
+                    subHeader: "Upper Bar",
                     aboutButton: "About",
                     contactButton: "Contact us",
                     menuTitle: "Menu",
-                    categories: ["Main dishes", "Starters", "Salads", "Spreads", "Cover"],
+                    categories: ["Coffee", "Food", "Water-Juices-Soft drinks", "Wines-Beers-Beverages", "Extra"],
                     items: {
-                        "Main dishes": [
-                            { name: "Grilled Shrimp", desc: "", price: "€5.20" },
-                            { name: "Grilled Calamari", desc: "", price: "€7.80" },
-                            { name: "Fried Calamari", desc: "", price: "€4.30" },
-                            { name: "Fried Shrimps", desc: "", price: "€5.20" },
-                            { name: "Shrimp Saganaki", desc: "", price: "€5.80" },
-                            { name: "Fried Mussels", desc: "", price: "€3.10" },
-                            { name: "Mussels Saganaki", desc: "", price: "€4.20" },
-                            { name: "Grilled Octopus", desc: "", price: "€7.20" },
-                            { name: "Fried Anchovies", desc: "", price: "€3.30" },
-                            { name: "Swordfish", desc: "", price: "€5.80" },
-                            { name: "Shrimp Pasta", desc: "", price: "€5.10" },
-                            { name: "Skordalia Codfish", desc: "", price: "€3.40" }
+                        "Coffee": [
+                            { name: "Espresso", desc: "", price: "€0.45" },
+                            { name: "Espresso Double", desc: "", price: "€0.90" },
+                            { name: "Espresso Decaf", desc: "", price: "€0.60" },
+                            { name: "Freddo Espresso", desc: "", price: "€0.90" },
+                            { name: "Freddo Espresso Decaf", desc: "", price: "€1.20" },
+                            { name: "Capuccino", desc: "", price: "€1.00" },
+                            { name: "Freddo Capuccino", desc: "", price: "€1.00" },
+                            { name: "Freddo Capuccino Decaf", desc: "", price: "€1.30" },
+                            { name: "Greek Coffee", desc: "", price: "€0.30" },
+                            { name: "Greek Coffee Double", desc: "", price: "€0.60" },
+                            { name: "Nescafe Frappe", desc: "", price: "€0.50" },
+                            { name: "Nescafe Frappe Decaf", desc: "", price: "€0.70" },
+                            { name: "Chocolate Drink (Hot-Cold)", desc: "", price: "€1.30" }
                         ],
-                        "Starters": [
-                            { name: "Country French Fries", desc: "", price: "€1.40" },
-                            { name: "Cheese Croquettes", desc: "", price: "€2.00" },
-                            { name: "Bouyurdi", desc: "", price: "€3.40" },
-                            { name: "Feta", desc: "", price: "€1.80" },
-                            { name: "Feta Saganaki", desc: "", price: "€2.00" },
-                            { name: "Feta Breaded with Honey-Sesame", desc: "", price: "€3.10" },
-                            { name: "Fried Zucchini", desc: "", price: "€1.10" },
-                            { name: "Fried Eggplants", desc: "", price: "€1.40" },
-                            { name: "Ouzo Meze in Sunflower Oil", desc: "", price: "€2.60" }
+                        "Food": [
+                            { name: "Bonjour Kiss Strawberry Croissant", desc: "", price: "€1.15" },
+                            { name: "Sandwich Hutos", desc: "", price: "€1.25" },
+                            { name: "Croissant Hutos", desc: "", price: "€0.85" },
+                            { name: "Kinder Bueno", desc: "", price: "€0.90" },
+                            { name: "Kinder Bueno White", desc: "", price: "€0.90" },
+                            { name: "ION Milk Chocolate", desc: "", price: "€1.35" },
+                            { name: "ION Socofretta Milk Red", desc: "", price: "€0.50" },
+                            { name: "ION Derby", desc: "", price: "€0.55" },
+                            { name: "Pavlidis Chocolate 3Bit Strawberry Bar", desc: "", price: "€1.00" },
+                            { name: "Mars Single", desc: "", price: "€0.85" },
+                            { name: "Filled Chocolate", desc: "", price: "€0.55" },
+                            { name: "Nuts Portion", desc: "", price: "€0.35" }
                         ],
-                        "Salads": [
-                            { name: "Cucumber and Τomato", desc: "", price: "€1.80" },
-                            { name: "Cretan", desc: "", price: "€3.40" },
-                            { name: "Vinaigrette", desc: "", price: "€3.80" }
+                        "Water-Juices-Soft drinks": [
+                            { name: "Water Dios 500ml", desc: "", price: "€0.15" },
+                            { name: "Water Theoni 500ml", desc: "", price: "€0.15" },
+                            { name: "Amita Orange 100%", desc: "", price: "€0.90" },
+                            { name: "Amita Cherry", desc: "", price: "€0.75" },
+                            { name: "Amita Motion", desc: "", price: "€1.10" },
+                            { name: "Amita Orange-Apricot-Apple", desc: "", price: "€0.75" },
+                            { name: "Amita Free Orange", desc: "", price: "€0.95" },
+                            { name: "Coca Cola", desc: "", price: "€0.85" },
+                            { name: "Coca Cola Zero", desc: "", price: "€0.85" },
+                            { name: "Coca Cola Zero Lemon", desc: "", price: "€0.85" },
+                            { name: "Sprite", desc: "", price: "€0.75" },
+                            { name: "Fanta Lemon", desc: "", price: "€0.75" },
+                            { name: "Fanda Orange", desc: "", price: "€0.75" },
+                            { name: "Schweppes Soda", desc: "", price: "€0.50" },
+                            { name: "Schweppes Soda Lemon", desc: "", price: "€0.75" },
+                            { name: "Schweppes Lemonade-Orange-Grapefruit", desc: "", price: "€0.85" },
+                            { name: "Arizona Tea Various", desc: "", price: "€1.05" },
+                            { name: "Monster Energy Drink Various", desc: "", price: "€1.50" },
+                            { name: "Hell Energy Drink", desc: "", price: "€0.65" }
                         ],
-                        "Spreads": [
-                            { name: "Eggplant salad", desc: "", price: "€1.20" },
-                            { name: "Russian Salad", desc: "", price: "€1.20" },
-                            { name: "Tzatziki", desc: "", price: "€1.20" },
-                            { name: "Spicy Feta Cheese and Pepper Dip", desc: "", price: "€1.20" },
-                            { name: "Fava", desc: "", price: "€1.10" },
-                            { name: "Mykoniatiki", desc: "", price: "€2.40" }
+                        "Wines-Beers-Beverages": [
+                            { name: "Alfa 330ml", desc: "", price: "€0.90" },
+                            { name: "Alfa With Sea Salt 330ml", desc: "", price: "€1.10" },
+                            { name: "Amstel 330ml", desc: "", price: "€1.15" },
+                            { name: "Amstel Radler 330ml", desc: "", price: "€1.25" },
+                            { name: "Amstel Free 330ml", desc: "", price: "€0.80" },
+                            { name: "Heineken 330ml", desc: "", price: "€1.05" },
+                            { name: "Fix 330ml", desc: "", price: "€0.90" },
+                            { name: "Mamos 330ml", desc: "", price: "€1.00" },
+                            { name: "Vergina 330ml", desc: "", price: "€0.85" },
+                            { name: "Kaiser 330ml", desc: "", price: "€1.05" },
+                            { name: "McFarland 330ml", desc: "", price: "€2.75" },
+                            { name: "Corona 330ml", desc: "", price: "€3.25" },
+                            { name: "Sol 330ml", desc: "", price: "€1.95" },
+                            { name: "Bacardi Breezer 275ml Various", desc: "", price: "€2.45" },
+                            { name: "Retsina Malamatina 500ml", desc: "", price: "€1.70" },
+                            { name: "Plomari Ouzo With/Without Anise 200ml", desc: "", price: "€4.75" },
+                            { name: "Tsipouro Hedonico With/Without Anise 200ml", desc: "", price: "€5.90" },
+                            { name: "Le Coq Various", desc: "", price: "€2.10" },
+                            { name: "Vodka Stoli Mini 50ml", desc: "", price: "€2.50" },
+                            { name: "Whisky Johnnie Mini 50ml", desc: "", price: "€2.85" },
+                            { name: "Gin Gordons Mini 50ml", desc: "", price: "€2.35" },
+                            { name: "Julietta Dry White Wine 187ml", desc: "", price: "€1.40" },
+                            { name: "Julietta Semi Sweet White Wine 187ml", desc: "", price: "€1.40" },
+                            { name: "Julietta Dry Red Wine 187ml", desc: "", price: "€1.40" },
+                            { name: "Julietta Rosé Wine Semi Dry 187ml", desc: "", price: "€1.40" }
                         ],
-                        "Cover": [
-                            { name: "Cover Charge", desc: "", price: "€0.20" },
-                            { name: "Ketchup Stick", desc: "", price: "€0.10" },
-                            { name: "Mustard Stick", desc: "", price: "€0.10" },
-                            { name: "Mayonnaise Stick", desc: "", price: "€0.10" },
-                            { name: "Oil Stick", desc: "", price: "€0.30" }
+                        "Extra": [
+                            { name: "Cup", desc: "", price: "€0.10" },
+                            { name: "2 Seat Cup Case", desc: "", price: "€0.10" }
                         ]
                     }
                 }
@@ -341,29 +413,29 @@
             
             <h1>Μενού</h1>
 
-            <h2>Μερίδες</h2>
-            <div class="menu-section" id="main-dishes-section">
-                <!-- Main dishes items will be populated here by JavaScript -->
+            <h2>Καφές</h2>
+            <div class="menu-section" id="coffee-section">
+                <!-- Coffee dishes items will be populated here by JavaScript -->
             </div>
     
-            <h2>Ορεκτικά</h2>
-            <div class="menu-section" id="starters-section">
-                <!-- Starters items will be populated here by JavaScript -->
+            <h2>Τρόφιμα</h2>
+            <div class="menu-section" id="food-section">
+                <!-- Food items will be populated here by JavaScript -->
             </div>
 
-            <h2>Σαλάτες</h2>
-            <div class="menu-section" id="salad-section">
-                <!-- Salads items will be populated here by JavaScript -->
+            <h2>Νερό-Χυμοί-Αναψυκτικά</h2>
+            <div class="menu-section" id="water-juices-soft-drinks-section">
+                <!-- Water-Juices-Soft drinks items will be populated here by JavaScript -->
             </div>
 
-            <h2>Αλοιφές</h2>
-            <div class="menu-section" id="spreads-section">
-                <!-- Spreads items will be populated here by JavaScript -->
+            <h2>Κρασιά-Μπύρες-Ποτά</h2>
+            <div class="menu-section" id="wines-beers-beverages-section">
+                <!-- Wines-Beers-Beverages items will be populated here by JavaScript -->
             </div>
 
-            <h2>Κουβέρ</h2>
-            <div class="menu-section" id="cover-section">
-                <!-- Cover items will be populated here by JavaScript -->
+            <h2>Έξτρα</h2>
+            <div class="menu-section" id="extra-section">
+                <!-- Extra items will be populated here by JavaScript -->
             </div>
         </div>
     </div>
