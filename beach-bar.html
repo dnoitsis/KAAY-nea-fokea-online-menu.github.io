@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ΚΑΑΥ Νέας Φώκαιας Χαλκιδική online menu</title>
+    <style>
+        body {            
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('img/ouzeri-2.jpg') no-repeat center center fixed;  /* 'img/nea-fokea-tower-2.jpg' */
+            background-repeat: no-repeat;
+            background-position: top center;
+            background-attachment: fixed;
+            background-size: cover;
+            color: #333;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.7); /* White overlay with 70% opacity */
+            z-index: -1;
+        }
+        .background {
+        }
+        .header {
+            background: rgba(255, 223, 0, 0.8); /* Yellow theme */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .lang-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+        .lang-button img {
+            width: 30px;
+            height: 20px;
+        }
+        .menu {
+            flex: 1;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.4);
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+        .menu h2 {
+            color: #FFD700; /* Goldenrod */
+            border-bottom: 2px solid #FFD700; /* Goldenrod */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            font-family: 'Georgia', serif; /* Serif font for headings */
+        }
+        .menu-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+        .menu-section.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .menu-item {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Georgia', serif; /* Serif font for menu items */
+        }
+        .menu-item h3 {
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .menu-item p {
+            margin: 5px 0 0;
+            color: #666;
+        }
+        .price {
+            font-weight: bold;
+            color: #FFD700; /* Goldenrod */
+        }
+        .menu-section {
+            display: none;
+        }
+        .nav {
+            display: flex;
+            justify-content: flex-start;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media Query for Smartphones */
+        @media (max-width: 768px) {
+            body {
+                background: url('img/ouzeri-2.jpg') no-repeat center center fixed;
+                background-size: cover;
+                background-attachment: fixed;
+            }
+            body::before {
+                background: rgba(255, 255, 255, 0.8);
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.menu-section');
+            const headers = document.querySelectorAll('.menu h2');
+            const langButton = document.getElementById('lang-button');
+
+            const menuData = {
+                greek: {
+                    header: "ΚΑΑΥ Νέας Φώκαιας Χαλκιδική",
+                    subHeader: "Μπαρ Παραλίας",
+                    aboutButton: "Σχετικά",
+                    contactButton: "Επικοινωνία",
+                    menuTitle: "Μενού",
+                    categories: ["Καφές", "Τρόφιμα", "Νερό-Χυμοί-Αναψυκτικά", "Κρασιά-Μπύρες-Ποτά", "Έξτρα"],
+                    items: {
+                        "Καφές": [
+                            { name: "Espresso Μονός", desc: "", price: "€0.45" },
+                            { name: "Espresso Διπλός", desc: "", price: "€0.90" },
+                            { name: "Espresso Decaf", desc: "", price: "€0.60" },
+                            { name: "Freddo Espresso", desc: "", price: "€0.90" },
+                            { name: "Freddo Espresso Decaf", desc: "", price: "€1.20" },
+                            { name: "Capuccino", desc: "", price: "€1.00" },
+                            { name: "Freddo Capuccino", desc: "", price: "€1.00" },
+                            { name: "Freddo Capuccino Decaf", desc: "", price: "€1.30" },
+                            { name: "Ελληνικός Καφές Μονός", desc: "", price: "€0.30" },
+                            { name: "Ελληνικός Καφές Διπλός", desc: "", price: "€0.60" },
+                            { name: "Nescafe Φραπέ", desc: "", price: "€0.50" },
+                            { name: "Nescafe Φραπέ Decaf", desc: "", price: "€0.70" },
+                            { name: "Ρόφημα Σοκολάτας (Ζεστή-Κρύα)", desc: "", price: "€1.30" }
+                        ],
+                        "Τρόφιμα": [
+                            { name: "Κρουασάν Bonjour Kiss Πραλ. Φράουλα", desc: "", price: "€1.15" },
+                            { name: "Σάντουιτς Χούτος", desc: "", price: "€1.25" },
+                            { name: "Κρουασάν Χούτος", desc: "", price: "€0.85" },
+                            { name: "Kinder Bueno", desc: "", price: "€0.90" },
+                            { name: "Kinder Bueno White", desc: "", price: "€0.90" },
+                            { name: "ΙΟΝ Σοκολάτα Γάλακτος", desc: "", price: "€1.35" },
+                            { name: "ΙΟΝ Σοκοφρέτα Γάλακτος Κόκκινη", desc: "", price: "€0.50" },
+                            { name: "ΙΟΝ Derby", desc: "", price: "€0.55" },
+                            { name: "Σοκολάτα Παυλίδη 3Bit Μπάρα Φράουλα", desc: "", price: "€1.00" },
+                            { name: "Mars Single", desc: "", price: "€0.85" },
+                            { name: "Γεμιστά Σοκολάτα", desc: "", price: "€0.55" },
+                            { name: "Ξυροί Καρποί Μερίδα", desc: "", price: "€0.35" }
+                        ],
+                        "Νερό-Χυμοί-Αναψυκτικά": [
+                            { name: "Νερό Διός 500ml", desc: "", price: "€0.15" },
+                            { name: "Νερό Θεόνη 500ml", desc: "", price: "€0.15" },
+                            { name: "Αμίτα Πορτοκάλι 100%", desc: "", price: "€0.90" },
+                            { name: "Αμίτα Βύσσινο", desc: "", price: "€0.75" },
+                            { name: "Αμίτα Motion", desc: "", price: "€1.10" },
+                            { name: "Αμίτα Πορτοκάλι-Βερύκοκο-Μήλο", desc: "", price: "€0.75" },
+                            { name: "Αμίτα Free Πορτοκάλι", desc: "", price: "€0.95" },
+                            { name: "Κόκα Κόλα", desc: "", price: "€0.85" },
+                            { name: "Κόκα Κόλα Zero", desc: "", price: "€0.85" },
+                            { name: "Κόκα Κόλα Zero Λεμόνι", desc: "", price: "€0.85" },
+                            { name: "Σπράιτ", desc: "", price: "€0.75" },
+                            { name: "Φάντα Λεμόνι", desc: "", price: "€0.75" },
+                            { name: "Φάντα Πορτοκάλι", desc: "", price: "€0.75" },
+                            { name: "Schweppes Σόδα", desc: "", price: "€0.50" },
+                            { name: "Schweppes Σόδα Λεμόνι", desc: "", price: "€0.75" },
+                            { name: "Schweppes Λεμονάδα-Πορτοκάλι-Γκρέιπφρουτ", desc: "", price: "€0.85" },
+                            { name: "Αριζόνα Τσάι Διάφορα", desc: "", price: "€1.05" },
+                            { name: "Μόνστερ Ενεργειακό Ποτό Διάφορα", desc: "", price: "€1.50" },
+                            { name: "Hell Ενεργειακό Ποτό", desc: "", price: "€0.65" }
+                        ],
+                        "Κρασιά-Μπύρες-Ποτά": [
+                            { name: "Άλφα 330ml", desc: "", price: "€0.90" },
+                            { name: "Άλφα Με Θαλασσινό Αλάτι 330ml", desc: "", price: "€1.10" },
+                            { name: "Άμστελ 330ml", desc: "", price: "€1.15" },
+                            { name: "Άμστελ Ράντλερ 330ml", desc: "", price: "€1.25" },
+                            { name: "Άμστελ Free 330ml", desc: "", price: "€0.80" },
+                            { name: "Heineken 330ml", desc: "", price: "€1.05" },
+                            { name: "Φιξ 330ml", desc: "", price: "€0.90" },
+                            { name: "Μάμος 330ml", desc: "", price: "€1.00" },
+                            { name: "Βεργίνα 330ml", desc: "", price: "€0.85" },
+                            { name: "Κάιζερ 330ml", desc: "", price: "€1.05" },
+                            { name: "McFarland 330ml", desc: "", price: "€2.75" },
+                            { name: "Corona 330ml", desc: "", price: "€3.25" },
+                            { name: "Sol 330ml", desc: "", price: "€1.95" },
+                            { name: "Bacardi Breezer 275ml Διάφορα", desc: "", price: "€2.45" },
+                            { name: "Ρετσίνα Μαλαματίνα 500ml", desc: "", price: "€1.70" },
+                            { name: "Ούζο Πλωμάρι Με/Χωρίς Γλ. 200ml", desc: "", price: "€4.75" },
+                            { name: "Τσίπουρο Ηδωνικό Με/Χωρίς Γλ. 200ml", desc: "", price: "€5.90" },
+                            { name: "Λε Κοκ Διάφορα", desc: "", price: "€2.10" },
+                            { name: "Vodka Stoli Mini 50ml", desc: "", price: "€2.50" },
+                            { name: "Whisky Johnnie Mini 50ml", desc: "", price: "€2.85" },
+                            { name: "Gin Gordons Mini 50ml", desc: "", price: "€2.35" },
+                            { name: "Κρασί Τζουλιέτα Λευκός Ξηρός 187ml", desc: "", price: "€1.40" },
+                            { name: "Κρασί Τζουλιέτα Λευκός Ημ/κος 187ml", desc: "", price: "€1.40" },
+                            { name: "Κρασί Τζουλιέτα Ερυθρός Ξηρός 187ml", desc: "", price: "€1.40" },
+                            { name: "Κρασί Τζουλιέτα Ροζέ Ημ/ξηρος 187ml", desc: "", price: "€1.40" }
+                        ],
+                        "Έξτρα": [
+                            { name: "Ποτήρι Διάφανες", desc: "", price: "€0.10" },
+                            { name: "Θήκη 2 θέσεων", desc: "", price: "€0.10" }
+                        ]
+                    }
+                },
+                english: {
+                    header: "ΚΑΑΥ Nea Fokea Halkidiki",
+                    subHeader: "Beach Bar",
+                    aboutButton: "About",
+                    contactButton: "Contact us",
+                    menuTitle: "Menu",
+                    categories: ["Coffee", "Food", "Water-Juices-Soft drinks", "Wines-Beers-Beverages", "Extra"],
+                    items: {
+                        "Coffee": [
+                            { name: "Espresso", desc: "", price: "€0.45" },
+                            { name: "Espresso Double", desc: "", price: "€0.90" },
+                            { name: "Espresso Decaf", desc: "", price: "€0.60" },
+                            { name: "Freddo Espresso", desc: "", price: "€0.90" },
+                            { name: "Freddo Espresso Decaf", desc: "", price: "€1.20" },
+                            { name: "Capuccino", desc: "", price: "€1.00" },
+                            { name: "Freddo Capuccino", desc: "", price: "€1.00" },
+                            { name: "Freddo Capuccino Decaf", desc: "", price: "€1.30" },
+                            { name: "Greek Coffee", desc: "", price: "€0.30" },
+                            { name: "Greek Coffee Double", desc: "", price: "€0.60" },
+                            { name: "Nescafe Frappe", desc: "", price: "€0.50" },
+                            { name: "Nescafe Frappe Decaf", desc: "", price: "€0.70" },
+                            { name: "Chocolate Drink (Hot-Cold)", desc: "", price: "€1.30" }
+                        ],
+                        "Food": [
+                            { name: "Bonjour Kiss Strawberry Croissant", desc: "", price: "€1.15" },
+                            { name: "Sandwich Hutos", desc: "", price: "€1.25" },
+                            { name: "Croissant Hutos", desc: "", price: "€0.85" },
+                            { name: "Kinder Bueno", desc: "", price: "€0.90" },
+                            { name: "Kinder Bueno White", desc: "", price: "€0.90" },
+                            { name: "ION Milk Chocolate", desc: "", price: "€1.35" },
+                            { name: "ION Socofretta Milk Red", desc: "", price: "€0.50" },
+                            { name: "ION Derby", desc: "", price: "€0.55" },
+                            { name: "Pavlidis Chocolate 3Bit Strawberry Bar", desc: "", price: "€1.00" },
+                            { name: "Mars Single", desc: "", price: "€0.85" },
+                            { name: "Filled Chocolate", desc: "", price: "€0.55" },
+                            { name: "Nuts Portion", desc: "", price: "€0.35" }
+                        ],
+                        "Water-Juices-Soft drinks": [
+                            { name: "Water Dios 500ml", desc: "", price: "€0.15" },
+                            { name: "Water Theoni 500ml", desc: "", price: "€0.15" },
+                            { name: "Amita Orange 100%", desc: "", price: "€0.90" },
+                            { name: "Amita Cherry", desc: "", price: "€0.75" },
+                            { name: "Amita Motion", desc: "", price: "€1.10" },
+                            { name: "Amita Orange-Apricot-Apple", desc: "", price: "€0.75" },
+                            { name: "Amita Free Orange", desc: "", price: "€0.95" },
+                            { name: "Coca Cola", desc: "", price: "€0.85" },
+                            { name: "Coca Cola Zero", desc: "", price: "€0.85" },
+                            { name: "Coca Cola Zero Lemon", desc: "", price: "€0.85" },
+                            { name: "Sprite", desc: "", price: "€0.75" },
+                            { name: "Fanta Lemon", desc: "", price: "€0.75" },
+                            { name: "Fanda Orange", desc: "", price: "€0.75" },
+                            { name: "Schweppes Soda", desc: "", price: "€0.50" },
+                            { name: "Schweppes Soda Lemon", desc: "", price: "€0.75" },
+                            { name: "Schweppes Lemonade-Orange-Grapefruit", desc: "", price: "€0.85" },
+                            { name: "Arizona Tea Various", desc: "", price: "€1.05" },
+                            { name: "Monster Energy Drink Various", desc: "", price: "€1.50" },
+                            { name: "Hell Energy Drink", desc: "", price: "€0.65" }
+                        ],
+                        "Wines-Beers-Beverages": [
+                            { name: "Alfa 330ml", desc: "", price: "€0.90" },
+                            { name: "Alfa With Sea Salt 330ml", desc: "", price: "€1.10" },
+                            { name: "Amstel 330ml", desc: "", price: "€1.15" },
+                            { name: "Amstel Radler 330ml", desc: "", price: "€1.25" },
+                            { name: "Amstel Free 330ml", desc: "", price: "€0.80" },
+                            { name: "Heineken 330ml", desc: "", price: "€1.05" },
+                            { name: "Fix 330ml", desc: "", price: "€0.90" },
+                            { name: "Mamos 330ml", desc: "", price: "€1.00" },
+                            { name: "Vergina 330ml", desc: "", price: "€0.85" },
+                            { name: "Kaiser 330ml", desc: "", price: "€1.05" },
+                            { name: "McFarland 330ml", desc: "", price: "€2.75" },
+                            { name: "Corona 330ml", desc: "", price: "€3.25" },
+                            { name: "Sol 330ml", desc: "", price: "€1.95" },
+                            { name: "Bacardi Breezer 275ml Various", desc: "", price: "€2.45" },
+                            { name: "Retsina Malamatina 500ml", desc: "", price: "€1.70" },
+                            { name: "Plomari Ouzo With/Without Anise 200ml", desc: "", price: "€4.75" },
+                            { name: "Tsipouro Hedonico With/Without Anise 200ml", desc: "", price: "€5.90" },
+                            { name: "Le Coq Various", desc: "", price: "€2.10" },
+                            { name: "Vodka Stoli Mini 50ml", desc: "", price: "€2.50" },
+                            { name: "Whisky Johnnie Mini 50ml", desc: "", price: "€2.85" },
+                            { name: "Gin Gordons Mini 50ml", desc: "", price: "€2.35" },
+                            { name: "Julietta Dry White Wine 187ml", desc: "", price: "€1.40" },
+                            { name: "Julietta Semi Sweet White Wine 187ml", desc: "", price: "€1.40" },
+                            { name: "Julietta Dry Red Wine 187ml", desc: "", price: "€1.40" },
+                            { name: "Julietta Rosé Wine Semi Dry 187ml", desc: "", price: "€1.40" }
+                        ],
+                        "Extra": [
+                            { name: "Cup", desc: "", price: "€0.10" },
+                            { name: "2 Seat Cup Case", desc: "", price: "€0.10" }
+                        ]
+                    }
+                }
+            };
+
+            let currentLang = 'greek';
+
+            function updateMenu(language) {
+                document.querySelector('.header h1').textContent = menuData[language].header;
+                document.querySelector('.header p').textContent = menuData[language].subHeader;
+
+                document.querySelector('#about').textContent = menuData[language].aboutButton;
+                <!-- document.querySelector('#contact').textContent = menuData[language].contactButton; -->
+
+                document.querySelector('.menu h1').textContent = menuData[language].menuTitle;
+
+                const categories = document.querySelectorAll('.menu h2');
+                const sections = document.querySelectorAll('.menu-section');
+                categories.forEach((category, index) => {
+                    category.textContent = menuData[language].categories[index];
+                });
+
+                sections.forEach((section, index) => {
+                    const items = menuData[language].items[menuData[language].categories[index]];
+                    section.innerHTML = '';
+                    items.forEach(item => {
+                        const menuItem = document.createElement('div');
+                        menuItem.classList.add('menu-item');
+                        menuItem.innerHTML = `
+                            <div>
+                                <h3>${item.name}</h3>
+                                <p>${item.desc}</p>
+                            </div>
+                            <div class="price">${item.price}</div>
+                        `;
+                        section.appendChild(menuItem);
+                    });
+                });
+
+                const langFlag = document.querySelector('.lang-button img');
+                langFlag.src = language === 'greek' ? 'img/uk-flag.png' : 'img/gr-flag.png';
+            }
+
+            function switchLanguage() {
+                currentLang = currentLang === 'greek' ? 'english' : 'greek';
+                updateMenu(currentLang);
+            }
+            
+            langButton.addEventListener('click', function() {
+                switchLanguage();
+            });
+            
+            headers.forEach(header => {
+                header.addEventListener('click', function() {
+                    const section = this.nextElementSibling;
+                    if (section.classList.contains('show')) {
+                        section.classList.remove('show');
+                        setTimeout(() => {
+                            section.style.display = 'none';
+                        }, 500); // 0.5 second delay
+                    } else {
+                        sections.forEach(sec => {
+                            sec.classList.remove('show');
+                            setTimeout(() => {
+                                sec.style.display = 'none';
+                            }, 500);
+                        });
+                        setTimeout(() => {
+                            section.style.display = 'block';
+                            setTimeout(() => {
+                                section.classList.add('show');
+                            }, 10); // Short delay to allow display block to take effect
+                        }, 500);
+                    }
+                });
+            });
+
+            updateMenu(currentLang); // Initial menu update
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="nav">
+            <a id="about" href="about.html">Σχετικά</a>
+            <!-- <a id="contact" href="contact.html">Επικοινωνία</a> -->
+        </div>
+        <br>
+        <h1>ΚΑΑΥ Νέας Φώκαιας Χαλκιδική</h1>
+        <p>Ουζερί</p>
+        <div id="lang-button" class="lang-button">
+            <img src="img/gr-flag.png" alt="Language Flag">
+        </div>
+    </div>
+    <div class="background">
+        <div class="menu" id="menu">
+            
+            <h1>Μενού</h1>
+
+            <h2>Καφές</h2>
+            <div class="menu-section" id="coffee-section">
+                <!-- Coffee dishes items will be populated here by JavaScript -->
+            </div>
+    
+            <h2>Τρόφιμα</h2>
+            <div class="menu-section" id="food-section">
+                <!-- Food items will be populated here by JavaScript -->
+            </div>
+
+            <h2>Νερό-Χυμοί-Αναψυκτικά</h2>
+            <div class="menu-section" id="water-juices-soft-drinks-section">
+                <!-- Water-Juices-Soft drinks items will be populated here by JavaScript -->
+            </div>
+
+            <h2>Κρασιά-Μπύρες-Ποτά</h2>
+            <div class="menu-section" id="wines-beers-beverages-section">
+                <!-- Wines-Beers-Beverages items will be populated here by JavaScript -->
+            </div>
+
+            <h2>Έξτρα</h2>
+            <div class="menu-section" id="extra-section">
+                <!-- Extra items will be populated here by JavaScript -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
